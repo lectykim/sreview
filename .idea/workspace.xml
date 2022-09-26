@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e795d00-2f00-402f-8b8c-88937437d27c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/sreview/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/sreview/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sreview/src/main/java/com/sreviewonly/board/SreviewApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/sreview/src/main/java/com/sreviewonly/board/SreviewApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sreview/src/test/java/com/sreviewonly/board/SreviewApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/sreview/src/test/java/com/sreviewonly/board/SreviewApplicationTests.java" afterDir="false" />
+    <list default="true" id="3e795d00-2f00-402f-8b8c-88937437d27c" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sreview.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +36,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/new_project/sreview/sreview"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -46,6 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664159031097</updated>
       <workItem from="1664159033295" duration="111000" />
+      <workItem from="1664204811476" duration="80000" />
     </task>
     <servers />
   </component>
