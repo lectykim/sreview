@@ -5,22 +5,22 @@
       layout:decorate="~{layout/default_layout}">
 
 
-  <th:block layout:fragment="head">
+<th:block layout:fragment="head">
     <title>Spring boot</title>
 
     <!-- css -->
     <link th:href="@{/css/common.css}" rel="stylesheet"/>
-  </th:block>
+</th:block>
 
-  <body>
-    <th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
+<body>
+<th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
 
-  <div layout:fragment="content" class="content">
+<div layout:fragment="content" class="content">
     <h2>This is Content</h2>
-  </div>
+</div>
 
-  <th:block layout:fragment="footer" th:include="@{/gragments/footer}"></th:block>
-  </body>
+<th:block layout:fragment="footer" th:include="@{/fragments/footer}"></th:block>
+</body>
 
 
 
