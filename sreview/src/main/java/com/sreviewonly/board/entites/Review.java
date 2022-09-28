@@ -18,6 +18,7 @@ public class Review {
     @Id
     @GeneratedValue
     @Column(name = "review_id")
+    @Setter
     private long id;
 
     private long hits;

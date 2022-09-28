@@ -8,6 +8,12 @@ class SreviewApplicationTests {
 
 	@Test
 	void contextLoads() {
+
+	}
+
+	@Test
+	void userMakeTest(){
+
 	}
 
 }

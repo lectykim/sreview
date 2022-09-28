@@ -1,0 +1,14 @@
+2022-09-28.
+
+mysql ucreate command denied to user for table 에러 발생.
+
+해결 : root 권한으로 grant all priviliges *.*로 권한을 준 다음
+flush를 해줘야만, 유저에게 준 권한 적용이 제대로 된다.
+
+Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your
+ MySQL server version for the right syntax to use near 'rank varchar(255),
+
+해결 : 엔티티의 이름으로 rank라는 이름을 쓰면, 데이터베이스랑 충돌이 일어나는 듯 함.
+viprank로 enum의 이름을 바꿔서 해결!
+
+Feat : Mysql의 순위함수중에 rank라는 함수가 있다고 합니다.
