@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class IndexController {
 
+    //특정 mapping에 도착하면, return값으로 templates의 절대 경로를 돌려줌.
     @RequestMapping(value = "index",method = RequestMethod.GET)
     public String goIndex(HttpServletRequest request){
         return "index";
