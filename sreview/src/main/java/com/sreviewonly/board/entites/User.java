@@ -29,7 +29,7 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private VIPRANK rank;
+    private VIPRANK viprank;
 
     @Enumerated(EnumType.STRING)
     private ROLE role;
