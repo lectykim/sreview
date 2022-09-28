@@ -8,52 +8,64 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" aria-label="Third navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">SReview</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign In</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Sex Toy</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Women Masterbation Toy</a></li>
+                <li><a class="dropdown-item" href="#">Man Masterbation Toy</a></li>
+                <li><a class="dropdown-item" href="#">Couple Sex Toy</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            <form role="search">
+              <input class="form-control px-2 me-2" type="search" placeholder="Search" aria-label="Search">
+              
+            </form>
+            <button type="submit" class="btn btn-dark px-2 ms-2">GO</button>
+            
+          </div>
           
-          
-        <div class="d-flex justify-content-end">
-            <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
-            <a class="nav-link text-dark" href="#">Features</a>
-            <a class="nav-link text-dark" href="#">Pricing</a>
         </div>
-      </nav>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-    
-          <div class="collapse navbar-collapse" id="navbarsExample03">
-            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
-              <div class="dropdown">
-                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
-                      </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </div>
+    </nav>
+      <div class = "mt-1 py-4" style="background-color : rgb(255,175,190)">
+        <div class="row row-cols-1 row-cols-md-1 mt-1 mb-3 text-center">
+          <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+              <div class="card-header py-3" style="background-color : rgb(255,198,170)">
+                <h4 class="my-0 fw-normal">EVENT</h4>
+              </div>
+              <div class="card-body" style="background-color : rgb(255,175,190);">
+                <button type="button" class="mb-4" style="border:none ;background-color : rgb(255,175,190);">
+                  <img src="image/event_test1.jpg" class="img-fluid"/>
+                </button>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li style="font-weight:bold">You are the first reviewer</li>
+                  <li>Have a good shopping!</li>
+                  
                 </ul>
               </div>
-            </ul>
-            <form>
-              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            </form>
+            </div>
           </div>
-        </div>
-      </nav>
 
+        </div>
+      </div>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </body>
   
