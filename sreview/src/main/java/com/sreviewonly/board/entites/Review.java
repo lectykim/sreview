@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,6 +34,25 @@ public class Review {
     private boolean is_hided;
 
     private Long likes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastModifiedDate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date deletedDate;
+
+    @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
+    List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
+    List<Product> products = new ArrayList<>();
+
 
 
 

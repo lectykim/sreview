@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -31,4 +28,8 @@ public class Product {
     private Long productPrice;
 
     private PREFERSEX productPreferSex;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Review review;
+
 }

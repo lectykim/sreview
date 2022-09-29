@@ -6,7 +6,9 @@ import com.sreviewonly.board.entites.enums.VIPRANK;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,7 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    @Column(name = "member_id")
+    @Column(name = "user_id")
     private long id;
 
     @Column(nullable = false)
@@ -36,15 +38,11 @@ public class User {
 
     private long point;
 
-
-
-
     private String profile_pic;
 
     private String background_pic;
 
     private boolean is_banned;
-
 
     @Enumerated(EnumType.STRING)
     private PREFERSEX prefersex;
@@ -57,6 +55,12 @@ public class User {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+
+    @OneToMany(mappedBy = "user",
+    cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
+
 
 
 
