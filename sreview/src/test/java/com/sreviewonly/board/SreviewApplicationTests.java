@@ -34,6 +34,8 @@ class SreviewApplicationTests {
 	@Autowired
 	public ProductToReviewRepository productToReviewRepository;
 
+	@Autowired
+	public ReviewToHashtagRepository reviewToHashtagRepository;
 
 	@Test
 	void contextLoads() {
@@ -150,5 +152,44 @@ class SreviewApplicationTests {
 		}
 
 
+	}
+	//N:M 매핑의 중간 테이블을 넣어서 잘 동작하는지 확인하는 과정.
+	@Test
+	void review_to_hashtag_insert(){
+		List<Hashtag> hashtagList = new ArrayList<>();
+		for(int i=1;i<=10;i++){
+			Hashtag hashtag = new Hashtag();
+			hashtag.setTagCnt(0L);
+			hashtag.setTagId("tag" + i);
+			hashtagList.add(hashtag);
+		}
+		hashtagRepository.saveAll(hashtagList);
+
+		List<ReviewToHashtag> reviewToHashtagList = new ArrayList<>();
+
+		for(long i=1;i<=3;i++){
+			Review review = reviewRepository.findById(i).get();
+			for(long j=1;j<=3;j++){
+				Hashtag hashtag = hashtagRepository.findById(j).get();
+				ReviewToHashtag reviewToHashtag = new ReviewToHashtag();
+				reviewToHashtag.setReview(review);
+				reviewToHashtag.setHashtag(hashtag);
+				reviewToHashtagList.add(reviewToHashtag);
+			}
+		}
+
+
+		reviewToHashtagRepository.saveAll(reviewToHashtagList);
+
+
+	}
+	@Test
+	void review_to_hashtag_select(){
+
+		Review review = reviewRepository.findById(1L).get();
+		for(ReviewToHashtag rth : review.getReviewToHashtagList()){
+
+			System.out.println(rth.getHashtag().getTagId());
+		}
 	}
 }

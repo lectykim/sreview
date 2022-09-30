@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
@@ -14,17 +13,17 @@ import java.util.List;
 
 @EntityListeners(AuditingEntityListener.class)
 @EntityScan
-public class Hashtag {
+public class ReviewToHashtag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tag_id")
     private long id;
 
-    private String tagId;
 
-    private Long tagCnt;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Review review;
 
-    @OneToMany(mappedBy = "hashtag",cascade = CascadeType.ALL)
-    private List<ReviewToHashtag> reviewToHashtagList;
+    @ManyToOne
+    private Hashtag hashtag;
+
 }

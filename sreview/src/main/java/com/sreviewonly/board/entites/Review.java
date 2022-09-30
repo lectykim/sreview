@@ -1,8 +1,6 @@
 package com.sreviewonly.board.entites;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,7 +10,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -61,6 +58,9 @@ public class Review {
 
     @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
     private List<ProductToReview> productToReviewList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
+    private List<ReviewToHashtag> reviewToHashtagList;
 
 
 
