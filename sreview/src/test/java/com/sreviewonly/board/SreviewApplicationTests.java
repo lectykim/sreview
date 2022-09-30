@@ -37,6 +37,9 @@ class SreviewApplicationTests {
 	@Autowired
 	public ReviewToHashtagRepository reviewToHashtagRepository;
 
+	@Autowired
+	public UserToReviewLikesRepository userToReviewLikesRepository;
+
 	@Test
 	void contextLoads() {
 
@@ -192,4 +195,38 @@ class SreviewApplicationTests {
 			System.out.println(rth.getHashtag().getTagId());
 		}
 	}
+
+	//10명이 좋아요를 누르고 게시글의 좋아요 수를 조회해보기. 조회수도 올리기. / JPQL을 이용한 구현.
+	@Test
+	void UserToReviewLikesRepositoryTest(){
+
+		List<UserToReviewLikes> userToReviewLikesList = new ArrayList<>();
+		for(long i=1;i<=10;i++){
+			User user = userRepository.findById(i).get();
+			Review review = reviewRepository.findById(1L).get();
+			UserToReviewLikes userToReviewLikes = new UserToReviewLikes();
+			userToReviewLikes.setUser(user);
+			userToReviewLikes.setReview(review);
+			userToReviewLikesList.add(userToReviewLikes);
+		}
+		userToReviewLikesRepository.saveAll(userToReviewLikesList);
+
+
+
+	}
+
+	//좋아요 삭제 & 좋아요 수 확인
+	@Test
+	void remove_like_and_count(){
+		Review review = reviewRepository.findById(1L).get();
+		User user = userRepository.findById(2L).get();
+		userToReviewLikesRepository.deleteByReviewAndUser(review,user);
+
+		System.out.println(review.getUserToReviewLikesList().size());
+
+	}
+
+
 }
+
+

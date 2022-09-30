@@ -67,6 +67,10 @@ public class User {
     cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user",
+    cascade = CascadeType.ALL)
+    private List<UserToReviewLikes> userToReviewLikesList;
+
 
 
 

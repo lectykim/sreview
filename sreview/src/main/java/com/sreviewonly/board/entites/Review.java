@@ -62,6 +62,11 @@ public class Review {
     @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
     private List<ReviewToHashtag> reviewToHashtagList;
 
+    @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
+    private List<UserToReviewLikes> userToReviewLikesList;
+
+
+
 
 
 
