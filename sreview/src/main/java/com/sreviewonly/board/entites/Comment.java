@@ -4,17 +4,24 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Setter
+
+@EntityListeners(AuditingEntityListener.class)
+@EntityScan
 public class Comment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "content_id")
     private long id;
 
@@ -23,12 +30,12 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     private Review review;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    @CreatedDate
+    private LocalDateTime createdDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedDate;
+
+    private LocalDateTime deletedDate;
 }

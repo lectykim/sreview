@@ -3,7 +3,11 @@ package com.sreviewonly.board;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+
+@EnableJpaAuditing //jpa auditing을 활성화하여, 언제 데이터베이스가 생성되었는지를 감시한다.
 @SpringBootApplication
 public class SreviewApplication {
 

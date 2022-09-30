@@ -4,19 +4,27 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
+
+@EntityListeners(AuditingEntityListener.class)
+@EntityScan
 public class Review {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
     @Setter
     private long id;
@@ -33,25 +41,24 @@ public class Review {
 
     private boolean is_hided;
 
-    private Long likes;
+    private long likes;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    @CreatedDate
+    private LocalDateTime createdDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedDate;
+
+    private LocalDateTime deletedDate;
 
     @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
     List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
-    List<Product> products = new ArrayList<>();
+
 
 
 
