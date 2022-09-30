@@ -69,7 +69,7 @@ public class User {
 
     @OneToMany(mappedBy = "user",
     cascade = CascadeType.ALL)
-    private List<UserToReviewLikes> userToReviewLikesList;
+    private List<Heart> heartList;
 
 
 

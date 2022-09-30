@@ -8,22 +8,21 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 @Entity
+
 @Getter
 @Setter
 
 @EntityListeners(AuditingEntityListener.class)
 @EntityScan
-public class UserToReviewLikes {
+public class Heart {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // mysql database에서 primary_key를 사용하는 방법.
     private long id;
 
+    private long reviewId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Review review;
-
-
 
 }
