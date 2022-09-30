@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 class SreviewApplicationTests {
@@ -119,6 +120,24 @@ class SreviewApplicationTests {
 			System.out.println("|||");
 			System.out.println(reviews.getContent());
 			System.out.println("|||");
+		}
+	}
+
+	//FetchType.LAZY만 설정하고 똑같이 outer join을 사용한 경우.
+	@Test
+	void N_1_Test(){
+		List<User> userList = userRepository.findAll();
+		List<String> reviewerNames = userList.stream().flatMap(it->it.getReviews().stream().map(review -> review.getContent())).collect(Collectors.toList());
+		System.out.println(reviewerNames);
+	}
+
+	//JPQL로 직접 Fetch Join을 설정해준 경우
+	@Test
+	void fetch_join_test(){
+		List<User> userList = userRepository.findAllWithReviewUsingFetchJoin();
+		List<String> reviewerNames = userList.stream().flatMap(it->it.getReviews().stream().map(review -> review.getContent())).collect(Collectors.toList());
+		for(String str:reviewerNames){
+			System.out.println(str);
 		}
 	}
 

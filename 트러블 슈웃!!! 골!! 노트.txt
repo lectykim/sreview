@@ -12,3 +12,45 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 viprank로 enum의 이름을 바꿔서 해결!
 
 Feat : Mysql의 순위함수중에 rank라는 함수가 있다고 합니다.
+
+2022-09-30.
+
+defined in com.sreviewonly.board.repositories.userrepository defined in @enablejparepositories declared on 
+jparepositoriesregistrar.enablejparepositoriesconfiguration: 
+invocation of init method failed; nested exception is java.lang.illegalargumentexception: 
+not a managed type: class com.sreviewonly.board.entites.user
+
+error 발생.
+해결하려고 하는 중.
+
+1. @NoRepositoryBean 어노테이션을 이용하여, 레포지토리에 잘 올라가는지 확인. no repository를 설정한 어노테이션에서는 에러가 발생하지 않음 = Bean에 올라가지 못하는 문제.
+2. 트러블 슈팅 중 복붙했던 @MappingSuperclass 어노테이션 발견.
+해당 어노테이션은 중복되는 엔티티를 상속받아 사용하기 위한 어노테이션인데, 모든 엔티티에 올라가 있어서 문제가 발생했다고 판단.
+제거 후 다른 에러 발생.
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: 
+Invocation of init method failed; nested exception is org.hibernate.AnnotationException: Use of @OneToMany or @ManyToMany targeting an unmapped class: com.sreviewonly.board.entites.User.reviews[com.sreviewonly.board.entites.Review]
+
+매핑되지 않은 엔티티에 매핑을 걸었다는 이유로 에러 발생.
+그럼 주인인 review를 먼저 생성해보자.
+
+어라라? orphanRemove = true;를 제거하니까 그냥 작동이 됨.
+오르판 리무브는, 데이터베이스를 편집할 때만 사용하는게 좋다고 생각됨.
+
+해결 : @MappingSuperclass의 사용법과, orphanremove=true의 사용법을 잘 몰라서 일어난 일.
+
+매핑 시 문제? 나타나지 않음.
+그러나 GeneratedValue가 모든 테이블에 값을 insert할 때 마다 generateValue가 한번에 적용된다.
+generate = GeneratedType.IDENTIFY로 mysql 내의 auto_increase 알고리즘을 사용하여 해결!
+auto로 쓰게 되면 jpa 내의 generatedValue가 적용되어서 어떤 데이터베이스는 20부터 시작할수도 있다.
+
+
+N:M Mapping
+
+중요! N과 M사이에 중간 테이블을 만들어서, ManytoOne& OneToMany를 사용하여 중간 테이블을 만들어서 사용해주는게 좋다.
+테이블 1:N 단방향 매핑이 좋지 않은 이유는,
+매핑을 해도 외래키를 기준으로, 요소를 찾기 때문이다.
+
+N+1 Problem
+1. 실무에서 문제를 일어나지 않게 하기 위해, fetch = FetchType.LAZY로 지연 로딩을 사용한다.
+그러나 지연 로딩을 사용하더라도, 지연 로딩으로 불러온 객체에서 새로운 값을 얻어내려면 다시 N+1개의 쿼리를 쏴줘야 하는 상황이 생김.
+이 문제를 Fetch join으로 해결할 수 있으며, 이는 JPQL으로 불러올 수 있다.
