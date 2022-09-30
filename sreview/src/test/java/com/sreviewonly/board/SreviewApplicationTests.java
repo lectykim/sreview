@@ -1,9 +1,6 @@
 package com.sreviewonly.board;
 
-import com.sreviewonly.board.entites.Comment;
-import com.sreviewonly.board.entites.Product;
-import com.sreviewonly.board.entites.Review;
-import com.sreviewonly.board.entites.User;
+import com.sreviewonly.board.entites.*;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.entites.enums.ROLE;
 import com.sreviewonly.board.entites.enums.VIPRANK;
@@ -34,6 +31,10 @@ class SreviewApplicationTests {
 	@Autowired
 	public HashtagRepository hashtagRepository;
 
+	@Autowired
+	public ProductToReviewRepository productToReviewRepository;
+
+
 	@Test
 	void contextLoads() {
 
@@ -62,7 +63,7 @@ class SreviewApplicationTests {
 
 	@Test
 	void reviewMakeTest(){
-		User user = userRepository.findById(1L).get();
+
 		for(int i=1;i<=10;i++){
 			Review review = new Review();
 			review.setTitle("my title" + i);
@@ -71,7 +72,7 @@ class SreviewApplicationTests {
 			review.setHits(0L);
 			review.setLikes(0L);
 			review.set_hided(false);
-			review.setUser(user);
+
 			reviewRepository.save(review);
 		}
 	}
@@ -89,7 +90,6 @@ class SreviewApplicationTests {
 
 	@Test
 	void ProductMakeTest(){
-		Review review = reviewRepository.findById(10L).get();
 		for(int i=1;i<=10;i++){
 			Product product = new Product();
 			product.setProductName("mmt_aimi");
@@ -142,5 +142,13 @@ class SreviewApplicationTests {
 	}
 
 
+	@Test
+	void N_M_Test(){
+		Review review = reviewRepository.findById(1L).get();
+		for(ProductToReview ptr:review.getProductToReviewList()){
+			System.out.println(ptr.getProduct().getId());
+		}
 
+
+	}
 }
