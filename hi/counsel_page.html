@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+            crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div
+            style="margin-left:10%; margin-right:10%; background-color:mediumspringgreen; padding: 30px 30px;">
+            <div style="margin-top:20px; margin-left:20px; margin-right: 20px;">
+                <form method="post" enctype="multipart/form-data">
+                    <!-- 부모 div와 자식 요소를 크기가 같게 만들고 싶은 경우 : 
+                    부모 : overflow: hidden;
+                        position: relative;
+                        width: 100%;"
+                    자식 : width: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        을 사용하여 만들 수 있다. -->
+                    <div
+                        style="margin-top: 20px; margin-right: 20px; padding: 30px 30px;
+                        overflow: hidden;
+                        position: relative;
+                        width: 100%;">
+                        <input
+                            type="text"
+                            placeholder="input your title"
+                            style="border: none; text-align: center;     height: 100%;
+                        width: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 0;"/>
+                    </div>
+                    <div style="margin-top:20px">
+                        <textarea placeholder="내용을 입력해 주세요." style="    width: 100%;
+                        height: 40rem;
+                        border: none;
+                        resize: none;
+                        background-color: rgb(255, 165, 190);"></textarea>
+                    </div>
+                    <div
+                        style="margin-top: 20px; margin-right: 20px; padding: 30px 30px;
+                        overflow: hidden;
+                        position: relative;
+                        width: 100%;">
+                        <input
+                            type="email"
+                            placeholder="input your email"
+                            style="border: none; text-align: center;     height: 100%;
+                        width: 100%;
+                        position: absolute;
+                        right: 0;
+                        top: 0;"/>
+                    </div>
+                    <br>
+                    <input type="submit" value="submit"/>
+                    <input type="reset" value="reset"/>
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>
