@@ -1,5 +1,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<div class="header">
-  <h2>Header</h2>
-</div>
+<!-- This is Navbar -->
+<nav
+        class="navbar navbar-expand-sm navbar-light bg-light"
+        aria-label="Third navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">SReview</a>
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarsExample03"
+            aria-controls="navbarsExample03"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/index/signin}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign In</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">Sex Toy</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#">Women Masterbation Toy</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Man Masterbation Toy</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Couple Sex Toy</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-center">
+        <form role="search">
+          <input
+                  class="form-control px-2 me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"></form>
+        <button type="submit" class="btn btn-dark px-2 ms-2">GO</button>
+
+      </div>
+
+    </div>
+  </div>
+</nav>
 </html>

@@ -54,3 +54,12 @@ N+1 Problem
 1. 실무에서 문제를 일어나지 않게 하기 위해, fetch = FetchType.LAZY로 지연 로딩을 사용한다.
 그러나 지연 로딩을 사용하더라도, 지연 로딩으로 불러온 객체에서 새로운 값을 얻어내려면 다시 N+1개의 쿼리를 쏴줘야 하는 상황이 생김.
 이 문제를 Fetch join으로 해결할 수 있으며, 이는 JPQL으로 불러올 수 있다.
+
+2022-10-06
+Spring boot Resource Live Loading을 시행하기 위해 구글링을 해봤으나. 아무리 해도 live loading이 되지 않음.
+아마도 bootstrap의 영향 때문이라고 예상함.
+
+2022-10-07
+Spring boot의 front를 만지던 중, 이미지 경로가 잘 입력되지 않는 상황이 발생.
+스프링 부트는 경로앞에 / 슬래시를 붙혀야, 절대 경로로 인식하므로
+img src="/image/logo" 이렇게 붙혀야 함.
