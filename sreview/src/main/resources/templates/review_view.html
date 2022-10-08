@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+
+
+<th:block layout:fragment="head">
+  <title>Spring boot</title>
+
+  <!-- css -->
+  <link th:href="@{/css/common.css}" rel="stylesheet"/>
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+          crossorigin="anonymous">
+
+  <!-- Add icon library -->
+  <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</th:block>
+
+<body>
+<th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
+
+<!-- Flex display를 가진 div가 제일 위에 오면 안 됨.
+      그럴 경우 디스플레이의 전체 width가 쉽게 바뀔 수 있음. -->
+<div style=" margin-top: 30px; margin-left: 20px; margin-right: 20px; background-color:rgb(255, 170, 190)">
+  <div style="text-align: center;">
+    <h5 style="padding-top :10px">Username's Review</h5>
+  </div>
+  <div class="p-3" style="display: flex;">
+    <div style="margin-top:20px;margin-bottom:20px;margin-left: 30px; width: 150px; height:150px;">
+      <img src="/image/pmaru.webp" style="width: 150px; height:150px;" />
+    </div>
+
+    <div style="margin-top:20px;margin-bottom:20px;margin-left: 20%; text-align: center;">
+      <h6 style="background-color: yellowgreen; font: sans-serif; padding:10px 10px">Product Name</h6>
+      <h6 style="margin-top: 70px;background-color: yellowgreen; font: sans-serif; padding:10px 10px">Product Average Review Point</h6>
+    </div>
+  </div>
+</div>
+
+<div style=" margin-top: 30px; margin-left: 20px; margin-right: 20px; background-color:rgb(255, 170, 190)">
+  <div style="width: 100%; padding:15px 15px; text-align: center;">
+    hi
+  </div>
+  <div style="margin-top: 20px; margin-left: 20px; text-align: center;">
+
+    <span>Rating : </span>
+    <span class="fa fa-star checked" style="color: yellow;"></span>
+    <span class="fa fa-star checked" style="color: yellow;"></span>
+    <span class="fa fa-star checked" style="color: yellow;"></span>
+    <span class="fa fa-star checked" style="color: yellow;"></span>
+    <span class="fa fa-star"></span>
+  </div>
+  <div style="margin-top: 20px; width:100%; height: 6.25rem;">
+    <div style="text-align:center">
+      이 곳에 내용이 들어옵니다.
+    </div>
+  </div>
+  <div style=" margin-top: 30px; margin-left: 20px; margin-right: 20px; background-color:rgb(255, 170, 190)">
+    <div class="p-3" style="display: flex;">
+      <div style="margin-top:20px;margin-bottom:20px;margin-left: 30px; width: 150px; height:150px;">
+        <img src="/image/pmaru.webp" style="width: 150px; height:150px;" />
+      </div>
+
+      <div style="text-align: center; padding-top:70px; text-align: center; margin-left: 20%;background-color: yellowgreen; flex:1">
+        <h5 style=" padding-top :10px;">Seller's reply</h5>
+      </div>
+
+    </div>
+    <div style="margin-top: 30px; margin-left: 20px; margin-right: 20px; height: 300px;">
+      <div style=" background-color: mediumspringgreen;  margin-top:30px; padding:20px 20px; height: auto;text-align: center;">
+        Concentrated Reply
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<th:block layout:fragment="footer" th:include="@{/fragments/footer}"></th:block>
+</body>
+</html>
