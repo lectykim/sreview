@@ -199,12 +199,8 @@
             </div>
             <div class="mt-5 p-2 ml-5 mr-5" style="background-color: rgb(255,190,175); width: 30%; height: 100%;">
                 <h5>Influencer Ranking</h5>
-                <ul>
-                    <li><a th:href="@{review_find_by_user}">Rank 1</a></li>
-                    <li><a th:href="@{review_find_by_user}">Rank 2</a></li>
-                    <li><a th:href="@{review_find_by_user}">Rank 3</a></li>
-                    <li><a th:href="@{review_find_by_user}">Rank 4</a></li>
-                    <li><a th:href="@{review_find_by_user}">Rank 5</a></li>
+                <ul th:each="item : ${items}">
+                    <li><a th:href="@{review_find_by_user}" th:text="${item.nickname}">Rank 1</a></li>
                 </ul>
             </div>
 

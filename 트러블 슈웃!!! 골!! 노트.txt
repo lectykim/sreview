@@ -63,3 +63,24 @@ Spring boot Resource Live Loading을 시행하기 위해 구글링을 해봤으�
 Spring boot의 front를 만지던 중, 이미지 경로가 잘 입력되지 않는 상황이 발생.
 스프링 부트는 경로앞에 / 슬래시를 붙혀야, 절대 경로로 인식하므로
 img src="/image/logo" 이렇게 붙혀야 함.
+
+2022-10-08
+html파일의 에 th:href를 눌러도 계속 적용이 안 됨.
+해결 : onClick 부분을 location.href="link" 부분으로 치환하여 해결함.
+
+Service -> ServiceImpl -> Controller
+부분으로 가는 로직을 정리함.
+Page<T> 타입으로 받아와서 View로 보내도, View로 잘 받아지며,
+페이지에 접속했을 때, 쿼리가 돌아가서 정보를 받아온다.
+
+2022-10-11
+
+Page 객체를 list로 변환하는 함수 : page.getContent()를 사용해서 변환을 할 수 있다.
+
+Page 객체를 th:each로 조회했지만, 객체조회가 안 되는 상황이 발생했다.
+이는 localhost:8080으로 뒤에 접속하고자 하는 페이지를 접속하지 않아서 발생했던 상황이었다.
+다음에는 맨 아래 index controller 대신에 asterisk를 자주 활용해봐야겠다.
+
+Thymeleaf와 template engine의 오해.
+대부분의 예제가 Table tbody의 tr td 단위로 th:each를 적용해서 테이블 요소만 적용이 되는 줄 알았지만,
+ul -> li로 이어지는 html 템플릿에서도 제대로 적용이 된다!

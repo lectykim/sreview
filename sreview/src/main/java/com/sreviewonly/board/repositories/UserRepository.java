@@ -17,4 +17,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Query("SELECT u FROM User u join fetch u.reviews")
     public List<User> findAllWithReviewUsingFetchJoin();
 
+
+
 }

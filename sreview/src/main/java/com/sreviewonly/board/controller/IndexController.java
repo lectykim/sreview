@@ -1,14 +1,23 @@
 package com.sreviewonly.board.controller;
 
+import com.sreviewonly.board.entites.User;
+import com.sreviewonly.board.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    private IndexService indexService;
+
 
     //특정 mapping에 도착하면, return값으로 templates의 절대 경로를 돌려줌.
 
@@ -60,13 +69,27 @@ public class IndexController {
 
 
     @RequestMapping(value = "index",method = RequestMethod.GET)
-    public String goIndex(HttpServletRequest request){
+    public String goIndex(Model model){
+
+        // 인플루언서 랭킹을 받아오는 서비스.
+        Page<User> pages = indexService.getUsersOrderByPk();
+        List<User> items = pages.getContent();
+
+        for(User user:items){
+            System.out.println(user.getNickname());
+        }
+
+        model.addAttribute("items",items);
+
         return "index";
     }
 
     @RequestMapping(value = "",method = RequestMethod.GET)
     public String goAll(HttpServletRequest request){
-        return "index";
+        //리다이렉트
+        return "redirect:/index";
+
+
     }
 
 
