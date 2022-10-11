@@ -1,5 +1,6 @@
 package com.sreviewonly.board.controller;
 
+import com.sreviewonly.board.entites.Product;
 import com.sreviewonly.board.entites.User;
 import com.sreviewonly.board.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,14 +73,14 @@ public class IndexController {
     public String goIndex(Model model){
 
         // 인플루언서 랭킹을 받아오는 서비스.
-        Page<User> pages = indexService.getUsersOrderByPk();
-        List<User> items = pages.getContent();
 
-        for(User user:items){
-            System.out.println(user.getNickname());
-        }
+        List<User> users = indexService.getUserMain();
 
-        model.addAttribute("items",items);
+        List<Product> products = indexService.getProductMain();
+
+
+        model.addAttribute("users",users);
+        model.addAttribute("products",products);
 
         return "index";
     }

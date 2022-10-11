@@ -55,7 +55,6 @@ public class Review {
     @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
     List<Comment> comments = new ArrayList<>();
 
-
     @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
     private List<ProductToReview> productToReviewList = new ArrayList<>();
 
