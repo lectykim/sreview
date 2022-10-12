@@ -1,5 +1,6 @@
 package com.sreviewonly.board.entites;
 
+import com.sreviewonly.board.entites.enums.PREFERSEX;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -39,6 +40,8 @@ public class Review {
     private boolean is_hided;
 
     private long likes;
+
+    private PREFERSEX prefersex;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;

@@ -1,12 +1,16 @@
 package com.sreviewonly.board.controller;
 
 import com.sreviewonly.board.entites.Product;
+import com.sreviewonly.board.entites.Review;
 import com.sreviewonly.board.entites.User;
+import com.sreviewonly.board.entites.enums.PREFERSEX;
+import com.sreviewonly.board.service.ArrangeService;
 import com.sreviewonly.board.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,6 +22,9 @@ public class IndexController {
 
     @Autowired
     private IndexService indexService;
+
+    @Autowired
+    private ArrangeService arrangeService;
 
 
     //특정 mapping에 도착하면, return값으로 templates의 절대 경로를 돌려줌.
@@ -33,8 +40,29 @@ public class IndexController {
     }
 
     @RequestMapping(value = "review_find_by_product",method = RequestMethod.GET)
-    public String goReviewProduct(HttpServletRequest request){
+    public String goReviewProduct(@PathVariable String sex,Model model){
+        PREFERSEX prefersex = null;
+        if(sex.equals("MMT")){
+            prefersex = PREFERSEX.MMT;
+        }
+
+        if(sex.equals("WMT")){
+            prefersex = PREFERSEX.WMT;
+        }
+
+        if(sex.equals("CPT")){
+            prefersex = PREFERSEX.CPT;
+        }
+
+        if(sex==null){
+            prefersex = PREFERSEX.WMT;
+        }
+
+        List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
+        model.addAttribute("reviewList",reviewList);
+
         return "review_find_by_product";
+
     }
 
     @RequestMapping(value = "review_find_by_user",method = RequestMethod.GET)

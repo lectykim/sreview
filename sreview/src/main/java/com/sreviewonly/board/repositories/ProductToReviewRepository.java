@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface ProductToReviewRepository extends JpaRepository<ProductToReview,Long> {
 
-    public List<ProductToReviewRepository> findReviewByProduct(Product product);
+    public List<ProductToReview> findReviewByProduct(Product product);
 
-    public List<ProductToReviewRepository> findProductByReview(Review review);
+    public List<ProductToReview> findProductByReview(Review review);
 
 }
