@@ -253,6 +253,23 @@ class SreviewApplicationTests {
 
 	}
 
+	@Test
+	void findOne_product_Test(){
+		Review review = reviewRepository.findById(1L).get();
+		ProductToReview productToReview = productToReviewRepository.findFirstByReview(review);
+		System.out.println(productToReview.getProduct().getProductPic());
+	}
+
+	@Test
+	void prefersex_config(){
+		List<Review> reviews = new ArrayList<>();
+		for(long i=1;i<=10;i++){
+			Review review = reviewRepository.findById(i).get();
+			review.setPrefersex(PREFERSEX.MMT);
+			reviews.add(review);
+		}
+		reviewRepository.saveAll(reviews);
+	}
 
 
 }

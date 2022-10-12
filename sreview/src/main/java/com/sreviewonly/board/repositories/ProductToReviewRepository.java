@@ -13,4 +13,6 @@ public interface ProductToReviewRepository extends JpaRepository<ProductToReview
 
     public List<ProductToReview> findProductByReview(Review review);
 
+    public ProductToReview findFirstByReview(Review review);
+
 }
