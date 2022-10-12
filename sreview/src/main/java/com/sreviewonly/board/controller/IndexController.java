@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -20,8 +21,11 @@ import java.util.List;
 @Controller
 public class IndexController {
 
+
+
     @Autowired
     private IndexService indexService;
+
 
     @Autowired
     private ArrangeService arrangeService;
@@ -40,7 +44,7 @@ public class IndexController {
     }
 
     @RequestMapping(value = "review_find_by_product",method = RequestMethod.GET)
-    public String goReviewProduct(@PathVariable String sex,Model model){
+    public String goReviewProduct(@RequestParam(value = "prefersex") String sex, Model model){
         PREFERSEX prefersex = null;
         if(sex.equals("MMT")){
             prefersex = PREFERSEX.MMT;
@@ -57,6 +61,8 @@ public class IndexController {
         if(sex==null){
             prefersex = PREFERSEX.WMT;
         }
+
+        System.out.println(sex);
 
         List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
         model.addAttribute("reviewList",reviewList);

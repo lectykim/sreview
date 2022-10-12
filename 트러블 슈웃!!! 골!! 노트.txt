@@ -84,3 +84,18 @@ Page 객체를 th:each로 조회했지만, 객체조회가 안 되는 상황이 
 Thymeleaf와 template engine의 오해.
 대부분의 예제가 Table tbody의 tr td 단위로 th:each를 적용해서 테이블 요소만 적용이 되는 줄 알았지만,
 ul -> li로 이어지는 html 템플릿에서도 제대로 적용이 된다!
+
+2022-10-12
+
+@Autowired로 객체를 집어넣은 Service에서 Bean을 찾지 못하는 에러 발생.
+여러 부분 삽질을 해봤으나 얻은 결론은 : 
+@Service Annotation을 Service랑 ServiceImpl 두 곳에 전부 붙혀야 된다는 사실.
+둘 다 붙히니까 정상 작동된다.
+
+///
+
+Thymeleaf에서의 get parameter을 넣을 때는, details()를 붙히지 말고, 그냥 괄호를 치면 thymeleaf가 알아서 ?prefersex=mmt로
+알아서 바꿔준다. 헷갈리지 말고 그냥 괄호를 넣으면 될 듯.
+
+th:href="@{review_find_by_user(prefersex=${user.prefersex},id=${user.id})}"
+괄호를 넣으면 thymeleaf가 저절로  ,   =>   & 으로 바꿔준다.

@@ -41,6 +41,7 @@ public class Review {
 
     private long likes;
 
+    @Enumerated(EnumType.STRING)
     private PREFERSEX prefersex;
 
     @ManyToOne(fetch = FetchType.LAZY)

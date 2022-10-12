@@ -8,17 +8,22 @@ import com.sreviewonly.board.repositories.ProductRepository;
 import com.sreviewonly.board.repositories.ProductToReviewRepository;
 import com.sreviewonly.board.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ArrangeServiceImpl implements ArrangeService {
+
 
     @Autowired
     ProductRepository productRepository;
 
+
     @Autowired
     ProductToReviewRepository productToReviewRepository;
+
 
     @Autowired
     ReviewRepository reviewRepository;
@@ -52,7 +57,7 @@ public class ArrangeServiceImpl implements ArrangeService {
 
     @Override
     public List<Review> findReviewByPreferSex(PREFERSEX prefersex) {
-        List<Review> list = reviewRepository.findReviewByPreferSex(prefersex);
+        List<Review> list = reviewRepository.findReviewByprefersex(prefersex);
         return list;
     }
 

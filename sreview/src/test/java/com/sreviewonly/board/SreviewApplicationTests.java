@@ -78,6 +78,7 @@ class SreviewApplicationTests {
 			review.set_deleted(false);
 			review.setHits(0L);
 			review.setLikes(0L);
+			review.setPrefersex(PREFERSEX.WMT);
 			review.set_hided(false);
 
 			reviewRepository.save(review);
@@ -99,9 +100,9 @@ class SreviewApplicationTests {
 	void ProductMakeTest(){
 		for(int i=1;i<=10;i++){
 			Product product = new Product();
-			product.setProductName("mmt_aimi");
+			product.setProductName("mmt_aimi "+ i);
 			product.setProductPic("default.jpg");
-			product.setProductShop("my_shop");
+			product.setProductShop("my_shop "+ i);
 			product.setProductPrice(300000L);
 			product.setProductPreferSex(PREFERSEX.MMT);
 			productRepository.save(product);
@@ -120,6 +121,22 @@ class SreviewApplicationTests {
 	}
 
 	@Test
+	void productToReviewQueryTest(){
+		List<ProductToReview> productToReviewList = new ArrayList<>();
+		for(long i=1;i<=3;i++){
+			Review review = reviewRepository.findById(i).get();
+			for(long j=1;j<=3;j++){
+				Product product = productRepository.findById(j).get();
+				ProductToReview productToReview = new ProductToReview();
+				productToReview.setProduct(product);
+				productToReview.setReview(review);
+				productToReviewList.add(productToReview);
+			}
+		}
+		productToReviewRepository.saveAll(productToReviewList);
+	}
+
+	@Test
 	void reverseUserToReviewTest(){
 		User user = userRepository.findById(1L).get();
 		for(Review reviews:user.getReviews()){
@@ -129,6 +146,8 @@ class SreviewApplicationTests {
 			System.out.println("|||");
 		}
 	}
+
+
 
 	//FetchType.LAZY만 설정하고 똑같이 outer join을 사용한 경우.
 	@Test
@@ -213,6 +232,26 @@ class SreviewApplicationTests {
 		System.out.println(heartList.size());
 	}
 
+	@Test
+	void mappingTest_findProductByReviewId(){
+		Review review = reviewRepository.findById(1L).get();
+		List<ProductToReview> list = productToReviewRepository.findProductByReview(review);
+		for(ProductToReview productToReview:list){
+			System.out.println("product name : " + productToReview.getProduct().getProductName());
+		}
+
+	}
+
+	@Test
+	void mappingTest_findReviewByProduct(){
+		Product product = productRepository.findById(3L).get();
+
+		List<ProductToReview> list = productToReviewRepository.findReviewByProduct(product);
+		for(ProductToReview productToReview:list){
+			System.out.println("product name : " + productToReview.getReview().getContent());
+		}
+
+	}
 
 
 
