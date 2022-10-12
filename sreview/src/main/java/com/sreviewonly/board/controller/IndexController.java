@@ -71,6 +71,33 @@ public class IndexController {
 
     }
 
+    @RequestMapping(value = "review_main",method = RequestMethod.GET)
+    public String mainReview(@RequestParam(value = "prefersex") String sex, Model model){
+        PREFERSEX prefersex = null;
+        if(sex.equals("MMT")){
+            prefersex = PREFERSEX.MMT;
+        }
+
+        if(sex.equals("WMT")){
+            prefersex = PREFERSEX.WMT;
+        }
+
+        if(sex.equals("CPT")){
+            prefersex = PREFERSEX.CPT;
+        }
+
+        if(sex==null){
+            prefersex = PREFERSEX.WMT;
+        }
+
+        System.out.println(sex);
+
+        List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
+        model.addAttribute("reviewList",reviewList);
+
+        return "review_main";
+    }
+
     @RequestMapping(value = "review_find_by_user",method = RequestMethod.GET)
     public String goReviewUser(HttpServletRequest request){
         return "review_find_by_user";
