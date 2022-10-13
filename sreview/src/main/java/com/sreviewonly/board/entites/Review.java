@@ -32,6 +32,9 @@ public class Review {
     @Column(nullable = false)
     private String content;
 
+
+    private double star;
+
     @Column(nullable = false)
     private String title;
 
@@ -53,6 +56,8 @@ public class Review {
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;
 
+    private String mainPic;
+
 
     private LocalDateTime deletedDate;
 
@@ -60,19 +65,9 @@ public class Review {
     List<Comment> comments = new ArrayList<>();
 
     @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
-    private List<ProductToReview> productToReviewList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
     private List<ReviewToHashtag> reviewToHashtagList;
 
-
-
-
-
-
-
-
-
-
+    @ManyToOne(fetch=FetchType.LAZY)
+    private Product product;
 
 }

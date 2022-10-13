@@ -99,3 +99,12 @@ Thymeleaf에서의 get parameter을 넣을 때는, details()를 붙히지 말고
 
 th:href="@{review_find_by_user(prefersex=${user.prefersex},id=${user.id})}"
 괄호를 넣으면 thymeleaf가 저절로  ,   =>   & 으로 바꿔준다.
+
+
+2022-10-13
+
+Product와 Review Entity를 N:M Mapping을 설계했었는데,
+그럴 경우 여러 Product를 가져오는게 어렵다고 판단했다.
+그리고 유저가 리뷰를 올릴 때, 하나의 상품만 올리는 게 더 쉽다고 판단했다.
+여러 리뷰가 하나의 상품만을 가져올 수 있을 경우, Product:Review를 1:N 양방향 매핑으로 묶는게 편하다고 판단,
+테이블을 갈아엎었다.

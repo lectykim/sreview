@@ -93,7 +93,9 @@ public class IndexController {
         System.out.println(sex);
 
         List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
-        model.addAttribute("reviewList",reviewList);
+        model.addAttribute("prefersex",sex);
+        model.addAttribute("reviews",reviewList);
+
 
         return "review_main";
     }

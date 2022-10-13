@@ -35,10 +35,10 @@ public class Product {
 
     private PREFERSEX productPreferSex;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Review review;
-
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
-    private List<ProductToReview> productToReviewList = new ArrayList<>();
+    private List<Review> reviewList;
+
+
+
 
 }

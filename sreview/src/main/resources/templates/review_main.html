@@ -22,25 +22,22 @@
 <th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
 
 <div class="p-3" style="margin: 20px 20px; background-color: mediumspringgreen; text-align: center;">
-    <div style="text-align: center;">
-        MMT's List!
+    <div style="text-align: center;" th:text="${prefersex} + '\'s list!">
+
     </div>
 </div>
 <div class="container py-3" style="margin-top:50px;">
     <div style="text-align: right;">
         <button type="button" style="border:0.1em solid black; background-color: aqua; margin-bottom: 20px; padding: 10px 10px;">ADD Review</button>
     </div>
-    <div class="d-flex row row-cols-1 row-cols-md-3 mb-3" style="text-align: center;">
+    <div class="d-flex row row-cols-1 row-cols-md-3 mb-3" style="text-align: center;" th:each="review:${reviews}">
         <div class="col" style="padding-right:10px; padding-left:10px; ">
             <div style="background-color:mediumspringgreen">
-                <img src="image/pmaru.webp" style="width: 150px; height:150px; margin: 20px 20px 20px 20px;" />
+                <img th:src="/image/+${review.mainPic}" style="width: 150px; height:150px; margin: 20px 20px 20px 20px;" />
                 <div style="margin: 20px 20px;">
-                    <h6>Rank : ★★★★★</h6>
-                    <div style="padding-top:20px;">
-                        내용은
-                        어쩌구
-                        저쩌구
-                        ETC
+                    <h6 th:text="${review.title}"></h6>
+                    <h6 th:text="Rank +':'+${review.star}"></h6>
+                    <div style="padding-top:20px;" th:text="${review.content}">
                     </div>
                 </div>
             </div>

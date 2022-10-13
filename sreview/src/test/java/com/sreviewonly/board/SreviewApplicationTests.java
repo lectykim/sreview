@@ -31,8 +31,7 @@ class SreviewApplicationTests {
 	@Autowired
 	public HashtagRepository hashtagRepository;
 
-	@Autowired
-	public ProductToReviewRepository productToReviewRepository;
+
 
 	@Autowired
 	public ReviewToHashtagRepository reviewToHashtagRepository;
@@ -120,21 +119,7 @@ class SreviewApplicationTests {
 		}
 	}
 
-	@Test
-	void productToReviewQueryTest(){
-		List<ProductToReview> productToReviewList = new ArrayList<>();
-		for(long i=1;i<=3;i++){
-			Review review = reviewRepository.findById(i).get();
-			for(long j=1;j<=3;j++){
-				Product product = productRepository.findById(j).get();
-				ProductToReview productToReview = new ProductToReview();
-				productToReview.setProduct(product);
-				productToReview.setReview(review);
-				productToReviewList.add(productToReview);
-			}
-		}
-		productToReviewRepository.saveAll(productToReviewList);
-	}
+
 
 	@Test
 	void reverseUserToReviewTest(){
@@ -168,15 +153,7 @@ class SreviewApplicationTests {
 	}
 
 
-	@Test
-	void N_M_Test(){
-		Review review = reviewRepository.findById(1L).get();
-		for(ProductToReview ptr:review.getProductToReviewList()){
-			System.out.println(ptr.getProduct().getId());
-		}
 
-
-	}
 	//N:M 매핑의 중간 테이블을 넣어서 잘 동작하는지 확인하는 과정.
 	@Test
 	void review_to_hashtag_insert(){
@@ -232,33 +209,7 @@ class SreviewApplicationTests {
 		System.out.println(heartList.size());
 	}
 
-	@Test
-	void mappingTest_findProductByReviewId(){
-		Review review = reviewRepository.findById(1L).get();
-		List<ProductToReview> list = productToReviewRepository.findProductByReview(review);
-		for(ProductToReview productToReview:list){
-			System.out.println("product name : " + productToReview.getProduct().getProductName());
-		}
 
-	}
-
-	@Test
-	void mappingTest_findReviewByProduct(){
-		Product product = productRepository.findById(3L).get();
-
-		List<ProductToReview> list = productToReviewRepository.findReviewByProduct(product);
-		for(ProductToReview productToReview:list){
-			System.out.println("product name : " + productToReview.getReview().getContent());
-		}
-
-	}
-
-	@Test
-	void findOne_product_Test(){
-		Review review = reviewRepository.findById(1L).get();
-		ProductToReview productToReview = productToReviewRepository.findFirstByReview(review);
-		System.out.println(productToReview.getProduct().getProductPic());
-	}
 
 	@Test
 	void prefersex_config(){

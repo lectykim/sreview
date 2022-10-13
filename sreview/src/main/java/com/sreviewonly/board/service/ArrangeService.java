@@ -13,13 +13,13 @@ public interface ArrangeService {
 
 
 
-    List<Product> findProductByReviewId(long id);
 
-    List<Review> findReviewByProduct(Product product);
 
     List<Review> findReviewByPreferSex(PREFERSEX prefersex);
 
     List<Product> findProductByPreferSex(PREFERSEX prefersex);
+
+
 
 
 }
