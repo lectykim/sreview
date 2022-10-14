@@ -1,11 +1,13 @@
 package com.sreviewonly.board.controller;
 
+import com.sreviewonly.board.entites.Comment;
 import com.sreviewonly.board.entites.Product;
 import com.sreviewonly.board.entites.Review;
 import com.sreviewonly.board.entites.User;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.service.ArrangeService;
 import com.sreviewonly.board.service.IndexService;
+import com.sreviewonly.board.service.ReviewCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class IndexController {
 
     @Autowired
     private ArrangeService arrangeService;
+
+    @Autowired
+    private ReviewCrudService reviewCrudService;
 
 
     //특정 mapping에 도착하면, return값으로 templates의 절대 경로를 돌려줌.
@@ -73,24 +78,7 @@ public class IndexController {
 
     @RequestMapping(value = "review_main",method = RequestMethod.GET)
     public String mainReview(@RequestParam(value = "prefersex") String sex, Model model){
-        PREFERSEX prefersex = null;
-        if(sex.equals("MMT")){
-            prefersex = PREFERSEX.MMT;
-        }
-
-        if(sex.equals("WMT")){
-            prefersex = PREFERSEX.WMT;
-        }
-
-        if(sex.equals("CPT")){
-            prefersex = PREFERSEX.CPT;
-        }
-
-        if(sex==null){
-            prefersex = PREFERSEX.WMT;
-        }
-
-        System.out.println(sex);
+        PREFERSEX prefersex = PREFERSEX.changeStringToPreferSex(sex);
 
         List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
         model.addAttribute("prefersex",sex);
@@ -106,8 +94,22 @@ public class IndexController {
     }
 
     @RequestMapping(value = "review_view",method = RequestMethod.GET)
-    public String goReviewView(HttpServletRequest request){
+    public String goReviewView(@RequestParam(value = "id") Long id, Model model){
+
+        Review review = reviewCrudService.findReview(id);
+
+        Product product = review.getProduct();
+        User user = review.getUser();
+        List<Comment> comments = review.getComments();
+
+
+        model.addAttribute("review",review);
+        model.addAttribute("product",product);
+        model.addAttribute("user",user);
+        model.addAttribute("comments",comments);
+
         return "review_view";
+
     }
 
     @RequestMapping(value = "review_write_page",method = RequestMethod.GET)

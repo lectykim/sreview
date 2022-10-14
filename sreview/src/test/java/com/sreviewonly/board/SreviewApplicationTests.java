@@ -79,7 +79,7 @@ class SreviewApplicationTests {
 			review.setLikes(0L);
 			review.setPrefersex(PREFERSEX.WMT);
 			review.set_hided(false);
-
+			review.setMainPic("default.jpg");
 			reviewRepository.save(review);
 		}
 	}
@@ -119,6 +119,28 @@ class SreviewApplicationTests {
 		}
 	}
 
+	@Test
+	void mappingProductToReview(){
+		List<Review> list = new ArrayList<>();
+		for(long i=1;i<=10;i++){
+			Review review = reviewRepository.findById(i).get();
+			Product product = productRepository.findById(i%3+1).get();
+			review.setProduct(product);
+			list.add(review);
+		}
+		reviewRepository.saveAll(list);
+	}
+
+
+	@Test
+	void findReviewByProduct(){
+		Product product = productRepository.findById(1L).get();
+		List<Review> list = product.getReviewList();
+		for(Review review:list){
+			System.out.println(review.getContent());
+		}
+
+	}
 
 
 	@Test
@@ -217,6 +239,25 @@ class SreviewApplicationTests {
 		for(long i=1;i<=10;i++){
 			Review review = reviewRepository.findById(i).get();
 			review.setPrefersex(PREFERSEX.MMT);
+			reviews.add(review);
+		}
+		reviewRepository.saveAll(reviews);
+	}
+
+	@Test
+	void findByPreferSex(){
+		PREFERSEX prefersex = PREFERSEX.changeStringToPreferSex("WMT");
+
+		List<Review> reviewList = reviewRepository.findReviewByprefersex(prefersex);
+	}
+
+	@Test
+	void updateReview(){
+		List<Review> reviews = new ArrayList<>();
+		for(long i=1;i<=10;i++){
+			User user = userRepository.findById(i).get();
+			Review review = reviewRepository.findById(i).get();
+			review.setUser(user);
 			reviews.add(review);
 		}
 		reviewRepository.saveAll(reviews);

@@ -32,6 +32,7 @@ public class ArrangeServiceImpl implements ArrangeService {
     @Override
     public List<Product> findProductByPreferSex(PREFERSEX prefersex) {
         List<Product> list = productRepository.findProductByProductPreferSex(prefersex);
+
         return list;
     }
 

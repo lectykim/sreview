@@ -180,7 +180,7 @@
             <div class="mt-5 p-2 ml-5 mr-5" style="background-color: rgb(255,190,175); width: 30%; height: 100%;">
                 <h5>Product Ranking</h5>
                 <ul th:each="product : ${products}">
-                    <li><a th:href="@{review_find_by_product(prefersex=${product.productPreferSex})}" th:text="${product.productName}">Rank 1</a></li>
+                    <li><a th:href="@{review_main(prefersex=${product.productPreferSex})}" th:text="${product.productName}">Rank 1</a></li>
                 </ul>
             </div>
             <div class="mt-5 p-2 ml-5 mr-5" style=" color : white;width: 30%; height: 100%;">
@@ -196,12 +196,15 @@
             <div class="mt-5 p-2 ml-5 mr-5" style="background-color: rgb(255,190,175); width: 30%; height: 100%;">
                 <h5>Influencer Ranking</h5>
                 <ul th:each="user : ${users}">
-                    <li><a th:href="@{review_find_by_user(prefersex=${user.prefersex},id=${user.id})}" th:text="${user.nickname}">Rank 1</a></li>
+                    <li><a th:href="@{review_main(prefersex=${user.prefersex},id=${user.id})}" th:text="${user.nickname}">Rank 1</a></li>
                 </ul>
             </div>
 
         </div>
     </div>
+</div>
+<div id="page" style="text-align: center">
+
 </div>
 
 <th:block layout:fragment="footer" th:include="@{/fragments/footer}"></th:block>
