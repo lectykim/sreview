@@ -8,6 +8,7 @@ import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.service.ArrangeService;
 import com.sreviewonly.board.service.IndexService;
 import com.sreviewonly.board.service.ReviewCrudService;
+import com.sreviewonly.board.util.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class IndexController {
+
 
 
 
@@ -29,11 +32,16 @@ public class IndexController {
     private IndexService indexService;
 
 
+
     @Autowired
     private ArrangeService arrangeService;
 
+
     @Autowired
     private ReviewCrudService reviewCrudService;
+
+    @Autowired
+    private Pagination pagination;
 
 
     //특정 mapping에 도착하면, return값으로 templates의 절대 경로를 돌려줌.
@@ -48,49 +56,22 @@ public class IndexController {
         return "sign_in_part_1";
     }
 
-    @RequestMapping(value = "review_find_by_product",method = RequestMethod.GET)
-    public String goReviewProduct(@RequestParam(value = "prefersex") String sex, Model model){
-        PREFERSEX prefersex = null;
-        if(sex.equals("MMT")){
-            prefersex = PREFERSEX.MMT;
-        }
 
-        if(sex.equals("WMT")){
-            prefersex = PREFERSEX.WMT;
-        }
-
-        if(sex.equals("CPT")){
-            prefersex = PREFERSEX.CPT;
-        }
-
-        if(sex==null){
-            prefersex = PREFERSEX.WMT;
-        }
-
-        System.out.println(sex);
-
-        List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
-        model.addAttribute("reviewList",reviewList);
-
-        return "review_find_by_product";
-
-    }
 
     @RequestMapping(value = "review_main",method = RequestMethod.GET)
-    public String mainReview(@RequestParam(value = "prefersex") String sex, Model model){
+    public String mainReview(@RequestParam(value = "prefersex") String sex,@RequestParam(value = "page")int page, Model model){
         PREFERSEX prefersex = PREFERSEX.changeStringToPreferSex(sex);
 
-        List<Review> reviewList = arrangeService.findReviewByPreferSex(prefersex);
-        model.addAttribute("prefersex",sex);
+        Map<String,Integer> map = pagination.findPageInformation(15,prefersex);
+        List<Review> reviewList = arrangeService.findReviewByPreferSexLimitPaging(prefersex,map,page);
+
         model.addAttribute("reviews",reviewList);
+
+        model.addAttribute("prefersex",sex);
+
 
 
         return "review_main";
-    }
-
-    @RequestMapping(value = "review_find_by_user",method = RequestMethod.GET)
-    public String goReviewUser(HttpServletRequest request){
-        return "review_find_by_user";
     }
 
     @RequestMapping(value = "review_view",method = RequestMethod.GET)

@@ -6,9 +6,13 @@ import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.repositories.ProductRepository;
 import com.sreviewonly.board.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ArrangeServiceImpl implements ArrangeService {
@@ -17,27 +21,33 @@ public class ArrangeServiceImpl implements ArrangeService {
     @Autowired
     ProductRepository productRepository;
 
+
     @Autowired
     ReviewRepository reviewRepository;
 
 
-    //Review Id를 대상으로 상품의 객체를 리스트에 담아 반환하는 함수
+
 
     @Override
-    public List<Review> findReviewByPreferSex(PREFERSEX prefersex) {
-        List<Review> list = reviewRepository.findReviewByprefersex(prefersex);
-        return list;
+    public List<Review> findReviewByPreferSexLimitPaging(PREFERSEX prefersex, Map<String,Integer> map,int curPage) {
+        PageRequest pageRequest;
+
+        int left = map.get("perPage")*(curPage-1);
+        if(curPage>=map.get("pageSize")){
+            pageRequest = PageRequest.of(left,map.get("allPage"));
+        }else{
+            pageRequest = PageRequest.of(left,left+curPage);
+        }
+
+
+        Page<Review> reviewPage = reviewRepository.findReviewByprefersexOrderByIdDesc(prefersex,pageRequest);
+        return reviewPage.getContent();
     }
 
     @Override
     public List<Product> findProductByPreferSex(PREFERSEX prefersex) {
-        List<Product> list = productRepository.findProductByProductPreferSex(prefersex);
-
-        return list;
+        return null;
     }
-
-
-
 }
 
 

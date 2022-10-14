@@ -3,6 +3,7 @@ package com.sreviewonly.board.service;
 import com.sreviewonly.board.entites.Product;
 import com.sreviewonly.board.entites.Review;
 import com.sreviewonly.board.entites.User;
+import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,11 @@ public class ReviewCrudServiceImpl implements ReviewCrudService{
 
     @Override
     public Review findReview(Long id) {
+
         return reviewRepository.findById(id).get();
     }
+
+
 
 
 }

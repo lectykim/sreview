@@ -8,6 +8,7 @@ import com.sreviewonly.board.repositories.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -245,10 +246,11 @@ class SreviewApplicationTests {
 	}
 
 	@Test
-	void findByPreferSex(){
+	void findByPreferSex_pagetest(){
 		PREFERSEX prefersex = PREFERSEX.changeStringToPreferSex("WMT");
 
-		List<Review> reviewList = reviewRepository.findReviewByprefersex(prefersex);
+		Page<Review> reviews = reviewRepository.findReviewByprefersex(prefersex);
+
 	}
 
 	@Test

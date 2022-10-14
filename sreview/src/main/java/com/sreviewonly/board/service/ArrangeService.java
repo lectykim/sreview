@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface ArrangeService {
@@ -15,7 +16,9 @@ public interface ArrangeService {
 
 
 
-    List<Review> findReviewByPreferSex(PREFERSEX prefersex);
+
+
+    List<Review> findReviewByPreferSexLimitPaging(PREFERSEX prefersex,Map<String,Integer> map,int curPage);
 
     List<Product> findProductByPreferSex(PREFERSEX prefersex);
 
