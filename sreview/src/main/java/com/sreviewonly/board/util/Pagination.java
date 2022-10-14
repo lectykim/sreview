@@ -21,11 +21,7 @@ public class Pagination {
         pageMap.put("perPage",perPage);
         pageMap.put("allPage",allPage);
         pageMap.put("balancePage",allPage%perPage);
-        if(allPage%perPage==0){
-            pageMap.put("pageSize",allPage/perPage);
-        }else{
-            pageMap.put("pageSize",allPage/perPage+1);
-        }
+        pageMap.put("pageSize",allPage/perPage+1);
 
         return pageMap;
     }

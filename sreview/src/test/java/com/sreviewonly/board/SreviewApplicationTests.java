@@ -5,6 +5,8 @@ import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.entites.enums.ROLE;
 import com.sreviewonly.board.entites.enums.VIPRANK;
 import com.sreviewonly.board.repositories.*;
+import com.sreviewonly.board.service.ArrangeService;
+import com.sreviewonly.board.util.Pagination;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,7 +14,9 @@ import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @SpringBootTest
@@ -33,12 +37,17 @@ class SreviewApplicationTests {
 	public HashtagRepository hashtagRepository;
 
 
+	@Autowired
+	public ArrangeService arrangeService;
 
 	@Autowired
 	public ReviewToHashtagRepository reviewToHashtagRepository;
 
 	@Autowired
 	public HeartRepository heartRepository;
+
+	@Autowired
+	public Pagination pagination;
 
 
 
@@ -71,7 +80,7 @@ class SreviewApplicationTests {
 	@Test
 	void reviewMakeTest(){
 
-		for(int i=1;i<=10;i++){
+		for(int i=1;i<=1000;i++){
 			Review review = new Review();
 			review.setTitle("my title" + i);
 			review.setContent("my textarea" + i);
@@ -245,13 +254,7 @@ class SreviewApplicationTests {
 		reviewRepository.saveAll(reviews);
 	}
 
-	@Test
-	void findByPreferSex_pagetest(){
-		PREFERSEX prefersex = PREFERSEX.changeStringToPreferSex("WMT");
 
-		Page<Review> reviews = reviewRepository.findReviewByprefersex(prefersex);
-
-	}
 
 	@Test
 	void updateReview(){
@@ -263,6 +266,23 @@ class SreviewApplicationTests {
 			reviews.add(review);
 		}
 		reviewRepository.saveAll(reviews);
+	}
+
+	@Test
+	void paginate_test(){
+		PREFERSEX prefersex = PREFERSEX.MMT;
+		Map<String,Integer> map = pagination.findPageInformation(15,prefersex);
+		Iterator<String> iterator = map.keySet().iterator();
+		while(iterator.hasNext()){
+			String s = iterator.next();
+			System.out.println(s + " : " + map.get(s));
+		}
+
+		List<Review> list = arrangeService.findReviewByPreferSexLimitPaging(prefersex,map,1);
+		for(Review review:list){
+			System.out.println("list :" + review.getId());
+		}
+
 	}
 
 

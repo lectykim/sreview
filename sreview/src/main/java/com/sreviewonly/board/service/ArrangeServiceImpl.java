@@ -33,11 +33,9 @@ public class ArrangeServiceImpl implements ArrangeService {
         PageRequest pageRequest;
 
         int left = map.get("perPage")*(curPage-1);
-        if(curPage>=map.get("pageSize")){
-            pageRequest = PageRequest.of(left,map.get("allPage"));
-        }else{
-            pageRequest = PageRequest.of(left,left+curPage);
-        }
+        System.out.println("left : " + left);
+        System.out.println("right : " + map.get("perPage")*curPage);
+        pageRequest = PageRequest.of(curPage-1,15);
 
 
         Page<Review> reviewPage = reviewRepository.findReviewByprefersexOrderByIdDesc(prefersex,pageRequest);
