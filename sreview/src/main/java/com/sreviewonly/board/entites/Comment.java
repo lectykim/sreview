@@ -1,9 +1,6 @@
 package com.sreviewonly.board.entites;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,14 +13,13 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
+
 
 @EntityListeners(AuditingEntityListener.class)
 @EntityScan
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "content_id")
     private long id;
 
     private String content;
@@ -43,5 +39,15 @@ public class Comment {
 
     private LocalDateTime deletedDate;
 
+    @Builder
+    public Comment(String content,User user,Review review){
+        this.content=content;
+        this.user=user;
+        this.review=review;
+    }
 
+
+    public Comment() {
+
+    }
 }

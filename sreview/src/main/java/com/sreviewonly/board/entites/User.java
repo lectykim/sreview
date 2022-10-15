@@ -17,7 +17,6 @@ import java.util.List;
 
 @Entity
 @Getter
-@Setter
 
 @EntityListeners(AuditingEntityListener.class)
 @EntityScan
@@ -25,7 +24,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // mysql database에서 primary_key를 사용하는 방법.
-    @Column(name = "user_id")
+
     private long id;
 
     @Column(nullable = false)
@@ -70,12 +69,24 @@ public class User {
     cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user",
-    cascade = CascadeType.ALL)
-    private List<Heart> heartList;
 
 
+    @Builder
+    public User(String email, String nickname,String password , VIPRANK viprank,ROLE role ,long point,String profile_pic,String background_pic,boolean is_banned, PREFERSEX prefersex){
+        this.email=email;
+        this.nickname=nickname;
+        this.password=password;
+        this.viprank=viprank;
+        this.role=role;
+        this.point=point;
+        this.profile_pic=profile_pic;
+        this.background_pic=background_pic;
+        this.is_banned=is_banned;
+        this.prefersex=prefersex;
+    }
 
 
+    public User() {
 
+    }
 }

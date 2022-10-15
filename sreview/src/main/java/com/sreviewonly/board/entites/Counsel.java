@@ -4,37 +4,38 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
-
-
 @EntityListeners(AuditingEntityListener.class)
 @EntityScan
-public class Hashtag {
-
+public class Counsel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
 
-    private String tagId;
+    private String title;
 
-    private long tagCnt;
+    private String content;
 
+    private String email;
 
+    @CreatedDate
+    private LocalDateTime createdDate;
 
     @Builder
-    public Hashtag(String tagId,long tagCnt){
-        this.tagId=tagId;
-        this.tagCnt=tagCnt;
+    public Counsel(String title,String content,String email){
+        this.title=title;
+        this.content=content;
+        this.email=email;
     }
 
-    public Hashtag() {
+    public Counsel() {
 
     }
 }

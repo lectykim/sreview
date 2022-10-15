@@ -1,5 +1,6 @@
 package com.sreviewonly.board.entites;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
+
 
 @EntityListeners(AuditingEntityListener.class)
 @EntityScan
@@ -20,10 +21,19 @@ public class ReviewToHashtag {
     private long id;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Review review;
 
-    @ManyToOne
-    private Hashtag hashtag;
+    private long reviewId;
 
+
+    private long hashtagId;
+
+    @Builder
+    public ReviewToHashtag(long reviewId,long hashtagId){
+        this.reviewId=reviewId;
+        this.hashtagId=hashtagId;
+    }
+
+    public ReviewToHashtag() {
+
+    }
 }
