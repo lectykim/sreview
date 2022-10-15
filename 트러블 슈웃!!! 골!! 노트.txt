@@ -108,3 +108,16 @@ Product와 Review Entity를 N:M Mapping을 설계했었는데,
 그리고 유저가 리뷰를 올릴 때, 하나의 상품만 올리는 게 더 쉽다고 판단했다.
 여러 리뷰가 하나의 상품만을 가져올 수 있을 경우, Product:Review를 1:N 양방향 매핑으로 묶는게 편하다고 판단,
 테이블을 갈아엎었다.
+
+2022-10-14
+아무것도 없는 div에 요소를 동적으로 만들 때는 ,
+element를 만들고 setAttribute로 속성을 집어넣기,
+그리고 text를 createTextNode로 만들어서 appendChild() 함수를 통해 삽입한다.
+그리고 마지막에 inserAdjacentElement()라는 함수를 이용하여 첫 인자를
+beforeend로 넣게 되면, 이전 인자의 다음번 끝에 저절로 삽입이 된다!
+
+Page<> 자료형
+Page 자료형은 생각보다 편안하다.
+PageRequest = PageRequest.of( 조회할 페이지의 순서 , 단위로 설정할 페이지의 수 )로 준 다음에,
+getContent() 함수를 넣어주면 엄청 쉽게 개발에 성공할 수 있다.
+

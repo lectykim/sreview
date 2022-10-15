@@ -65,9 +65,13 @@ public class IndexController {
         Map<String,Integer> map = pagination.findPageInformation(15,prefersex);
         List<Review> reviewList = arrangeService.findReviewByPreferSexLimitPaging(prefersex,map,page);
 
-        model.addAttribute("reviews",reviewList);
 
-        model.addAttribute("prefersex",sex);
+
+        model.addAttribute("pageSize",map.get("pageSize"));
+        model.addAttribute("currPage",page);
+        model.addAttribute("firstPage",page/10*10+1);
+        model.addAttribute("reviews",reviewList);
+        model.addAttribute("preferSex",sex);
 
 
 
