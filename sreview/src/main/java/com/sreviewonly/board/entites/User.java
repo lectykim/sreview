@@ -63,6 +63,9 @@ public class User {
 
     private LocalDateTime deletedDate;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    private List<Comment> comments;
+
     @OneToMany(mappedBy = "user",
     cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();

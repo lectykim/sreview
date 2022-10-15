@@ -68,7 +68,7 @@ class SreviewApplicationTests {
 			user.setViprank(VIPRANK.BRONZE);
 			user.set_banned(false);
 			user.setPrefersex(PREFERSEX.MMT);
-			user.setRole(ROLE.MEMBER);
+			user.setRole(ROLE.SELLER);
 			user.setProfile_pic("default.jpg");
 			user.setBackground_pic("default.jpg");
 			userRepository.save(user);
@@ -96,13 +96,25 @@ class SreviewApplicationTests {
 
 	@Test
 	void commentMakeTest(){
-		Review review = reviewRepository.findById(10L).get();
+
 		for(int i=1;i<=10;i++){
+			Review review = reviewRepository.findById((long)i).get();
+			User user = userRepository.findById((long)i).get();
 			Comment comment = new Comment();
 			comment.setContent("content"+i);
-			comment.setReview(review);
+			//comment.setReview(review);
+			comment.setUser(user);
+
 			commentRepository.save(comment);
 		}
+	}
+
+	@Test
+	void mappingOneToOne(){
+		Review review = reviewRepository.findById(1L).get();
+		Comment comment = commentRepository.findById(2L).get();
+		review.setComment(comment);
+		System.out.println(review.getComment().getContent());
 	}
 
 	@Test

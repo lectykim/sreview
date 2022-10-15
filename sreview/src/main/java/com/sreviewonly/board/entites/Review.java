@@ -24,7 +24,6 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
-    @Setter
     private long id;
 
     private long hits;
@@ -61,8 +60,8 @@ public class Review {
 
     private LocalDateTime deletedDate;
 
-    @OneToMany(mappedBy = "review" , cascade = CascadeType.ALL)
-    List<Comment> comments = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    Comment comment;
 
     @OneToMany(mappedBy = "review",cascade = CascadeType.ALL)
     private List<ReviewToHashtag> reviewToHashtagList;

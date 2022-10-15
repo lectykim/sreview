@@ -29,6 +29,9 @@ public class Comment {
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @OneToOne(cascade=CascadeType.ALL, mappedBy = "comment")
     private Review review;
 
     @CreatedDate
