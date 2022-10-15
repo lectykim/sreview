@@ -153,6 +153,16 @@ class SreviewApplicationTests {
 		reviewRepository.saveAll(list);
 	}
 
+	@Test
+	void mappingCommentToReview(){
+		for(long i=2;i<=11;i++){
+			Review review = reviewRepository.findById(i).get();
+			Comment comment = commentRepository.findById(i).get();
+			review.setComment(comment);
+			reviewRepository.save(review);
+		}
+	}
+
 
 	@Test
 	void findReviewByProduct(){

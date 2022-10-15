@@ -85,13 +85,19 @@ public class IndexController {
 
         Product product = review.getProduct();
         User user = review.getUser();
-        //List<Comment> comments = review.getComments();
+        if(review.getComment()!=null){
+            model.addAttribute("comment",review.getComment());
+            if(review.getComment().getUser()!=null){
+                model.addAttribute("replyUser",review.getComment().getUser());
+            }
+        }
+
+
 
 
         model.addAttribute("review",review);
         model.addAttribute("product",product);
         model.addAttribute("user",user);
-        //model.addAttribute("comments",comments);
 
         return "review_view";
 

@@ -121,3 +121,8 @@ Page 자료형은 생각보다 편안하다.
 PageRequest = PageRequest.of( 조회할 페이지의 순서 , 단위로 설정할 페이지의 수 )로 준 다음에,
 getContent() 함수를 넣어주면 엄청 쉽게 개발에 성공할 수 있다.
 
+
+2022-10-15
+thymeleaf에서 null check를 해 줘야 하는 상황이 발생. 만약 null이면, 객체 자체를 띄워주지 않아야 html에 접속할 때 
+spelEvaluationException이 터지지 않는다.
+th:text="${hi?.getMember()?.getNickname()}"과 같이, Safe Search를 해 버리면 nullPointerException 문제를 피할 수 있다.
