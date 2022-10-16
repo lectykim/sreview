@@ -1,0 +1,29 @@
+Front : 
+☆글쓰기 창에서 원하는 상품을 골라서 리뷰를 작성할 수 있게 설정하는 비동기 Modal 추가.
+☆css 구조 바꾸기 / class와 name을 적절히 활용해서 디자이너의 요구에 따라 쉽게 수정할 수 있도록
+css 파일 전체를 변경
+☆toggle-bar 구현해서 bootstrap을 완전히 빼 버리기.
+☆user_config and user_view html css 설정
+
+
+Back:
+★ product search 백엔드 구현
+★ Setter -> DTO로 구조 변경 필요
+★ product or username search imply
+★ sign up and write 백엔드 구현
+★ Spring Security backend imply
+★ Login with google imply
+★ 상담내역 보관할 Database 추가 DB 재운용
+★ Email Verification 구현
+
+-----  여기까지 마친 후 -----
+
+
+
+Final : 
+♣ Korean, Japanese, English 3 language 구현
+♣ 각 나라의 Cookie 정책과 회원약관 수립 정책을 맞춰서 구현
+♣ application 만들어보기
+♣ 수익을 최대화할 수 있는 맞춤형 광고 구현해보기
+
+
