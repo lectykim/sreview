@@ -44,6 +44,15 @@ public class UserDTO {
     private PREFERSEX prefersex;
 
 
+    public UserDTO(){}
+
+    public void setOtherElement(){
+        this.viprank=VIPRANK.BRONZE;
+        this.role=ROLE.MEMBER;
+        this.isBanned=false;
+        this.point=0L;
+    }
+
     public UserDTO(User user){
         this.id = user.getId();
         this.email = user.getEmail();

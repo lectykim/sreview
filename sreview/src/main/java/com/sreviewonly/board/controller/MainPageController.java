@@ -50,15 +50,7 @@ public class MainPageController {
         return "review_main";
     }
 
-    @RequestMapping(value = "signin",method = RequestMethod.GET)
-    public String goSignin(HttpServletRequest request){
-        return "signin";
-    }
 
-    @RequestMapping(value = "sign_in_part_1",method = RequestMethod.GET)
-    public String goSigninPart1(HttpServletRequest request){
-        return "sign_in_part_1";
-    }
 
     @RequestMapping(value = "review_view",method = RequestMethod.GET)
     public String GetReviewView(@RequestParam(value = "id") long id, Model model){

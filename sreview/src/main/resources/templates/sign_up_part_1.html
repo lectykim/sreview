@@ -30,24 +30,28 @@
             width:100%;
             height:100%;"
 >
-    <form method="post" class="m-3 p-3" style="text-align: center;" enctype="multipart/form-data">
+    <form method="post" class="m-3 p-3" style="text-align: center;" th:action="@{/sign_up_final}" enctype="multipart/form-data">
         <fieldset style="width:100%">
             <div style="width:100%">
                 <img src="/image/logo_fastventure.png" style="margin: auto; max-width: 100%; height: auto;"/>
                 <div class="signup-form__catchphrase">SIGN IN</div>
             </div>
-            Email : <br><input type="email" name="email" class="my-2"/>
+            Email : <br><input type="email" name="email" id="email" class="my-2"/>
             <br>
-            Password : <br><input type="text" name="password" class="my-2"/>
+            Password : <br><input type="text" name="password" id="password" class="my-2"/>
             <br>
-            Check Password : <br><input type="text" name="password" class="my-2"/>
+            Check Password : <br><input type="text" name="passwordCheck" id="passwordCheck" class="my-2"/>
             <br>
-            Nickname : <br><input type="text" name="nickname" class="my-2"/>
+            Nickname : <br><input type="text" name="nickname" id="nickname" class="my-2"/>
             <br>
             Your Profile pic : <br><input type="file" name="profile_pic" accept="image/*"/>
             <br>
-            Your background pic : <br><input type="file" name="profile_pic" accept="image/*"/>
+            Your background pic : <br><input type="file" name="background_pic" accept="image/*"/>
             <br>
+            Your Prefer Sex to choose Sex Toy :
+            <br>
+            <input type="text" name="prefersex" id="prefersex" placeholder="please type only 3 element. mmt,wmt,cpt">
+            <button></button>
             <input type="submit" value="submit"/>
             <input type="reset" value="reset"/>
         </fieldset>

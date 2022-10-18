@@ -1,5 +1,6 @@
 package com.sreviewonly.board.entites;
 
+import com.sreviewonly.board.builder.CommonBuilder;
 import com.sreviewonly.board.dto.UserDTO;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.entites.enums.ROLE;
@@ -72,7 +73,8 @@ public class User {
 
 
 
-    @Builder
+
+
     public User(String email, String nickname,String password , VIPRANK viprank,ROLE role ,long point,String profile_pic,String background_pic,boolean isBanned, PREFERSEX prefersex){
         this.email=email;
         this.nickname=nickname;
@@ -94,5 +96,51 @@ public class User {
 
     public User() {
 
+    }
+
+    private User(UserBuilder builder){
+        this.email = builder.email;
+        this.nickname = builder.nickname;
+        this.viprank = builder.viprank;
+        this.role = builder.role;
+        this.password = builder.password;
+        this.point = builder.point;
+        this.profile_pic = builder.profile_pic;
+        this.background_pic = builder.background_pic;
+        this.isBanned = builder.isBanned;
+        this.prefersex = builder.prefersex;
+    }
+
+    public static class UserBuilder implements CommonBuilder<User>{
+        private String email;
+        private String nickname;
+        private String password;
+        private VIPRANK viprank;
+        private ROLE role;
+        private long point;
+        private String profile_pic;
+        private String background_pic;
+        private boolean isBanned;
+        private PREFERSEX prefersex;
+
+
+
+        public UserBuilder(UserDTO userDTO){
+            this.email = userDTO.getEmail();
+            this.nickname = userDTO.getNickname();
+            this.viprank = userDTO.getViprank();
+            this.role = userDTO.getRole();
+            this.password = userDTO.getPassword();
+            this.point = userDTO.getPoint();
+            this.profile_pic = userDTO.getProfile_pic();
+            this.background_pic = userDTO.getBackground_pic();
+            this.isBanned = userDTO.isBanned();
+            this.prefersex = userDTO.getPrefersex();
+        }
+
+        @Override
+        public User build(){
+            return new User(this);
+        }
     }
 }
