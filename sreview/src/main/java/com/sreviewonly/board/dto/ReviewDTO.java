@@ -44,6 +44,18 @@ public class ReviewDTO {
 
     private ProductDTO productDTO;
 
+    public ReviewDTO(){
+
+    }
+
+    public void setOtherElements(){
+        this.likes=0L;
+        this.hits=0L;
+        this.is_hided=false;
+        this.is_deleted=false;
+
+    }
+
     public ReviewDTO(Review review){
 
         this.id=review.getId();

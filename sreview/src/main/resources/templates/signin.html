@@ -41,9 +41,13 @@ wrapper : width설정
         <div class="signup-form__catchphrase">창작 활동을 더욱 즐겁게</div>
     </div>
     <div>
-        <button class="p-2 m-2 rounded-start rounded-start btn  btn-border-dark" style="width: 70%; background-color: rgb(246,189,251);">
-            <a href="index" style="color: black;">Login</a>
-        </button>
+        <form method="post" th:action="@{/login}" style="text-align: center;">
+            Email : <br><input type="email" name="email" id="email" class="my-2"/>
+            <br>
+            Password : <br><input type="text" name="password" id="password" class="my-2"/>
+            <br>
+            <input type="submit" value="submit"/>
+        </form>
     </div>
     <button class="p-2 m-2 rounded-start rounded-start btn btn-border-dark" style="width: 70%; background-color: darkgrey;">
         <a href="sign_in_part_1" style="color: black;">Sign in</a>

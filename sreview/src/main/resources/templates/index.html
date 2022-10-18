@@ -38,7 +38,8 @@
                 <ul class="list-unstyled mt-3 mb-4">
                     <li style="font-weight:bold">You are the first reviewer</li>
                     <li>Have a good shopping12!</li>
-
+                    <li style="font: 1px sans-serif" th:text="${session['user']?.nickname}"> Welcome</li>
+                    <a th:href="@{/logout}">log_out</a>
                 </ul>
             </div>
         </div>

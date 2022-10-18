@@ -23,6 +23,9 @@ public class ProductDTO {
 
     private PREFERSEX preferSex;
 
+    public ProductDTO(){
+
+    }
     public ProductDTO(Product product){
         this.id= product.getId();
         this.productPic = product.getProductPic();

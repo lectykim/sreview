@@ -16,4 +16,15 @@ public enum PREFERSEX {
         }
         return prefersex;
     }
+
+    public static String changePreferSexToString(PREFERSEX prefersex){
+        if(prefersex==WMT)
+            return "wmt";
+        if(prefersex==MMT)
+            return "mmt";
+        if(prefersex==CPT)
+            return "cpt";
+
+        return "wmt";
+    }
 }

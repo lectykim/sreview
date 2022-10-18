@@ -19,5 +19,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     public List<User> findTop5ByOrderByIdDesc();
 
+    public User findByEmail(String email);
+
 
 }

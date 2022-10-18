@@ -1,5 +1,6 @@
 package com.sreviewonly.board.service;
 
+import com.sreviewonly.board.dto.ReviewDTO;
 import com.sreviewonly.board.dto.UserDTO;
 import com.sreviewonly.board.entites.User;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
@@ -29,5 +30,17 @@ public class FileServiceImpl implements FileService{
         User user = new User.UserBuilder(userDTO).build();
 
         userRepository.save(user);
+    }
+
+    @Override
+    public void insertReview(MultipartFile profilePic, String title, String content, double star, UserDTO userDTO) {
+        String profilePictureNewName = FileNameRandomization.uploadFileWithUUID(profilePic);
+        ReviewDTO reviewDTO = new ReviewDTO();
+        reviewDTO.setUserDTO(userDTO);
+        reviewDTO.setPrefersex(userDTO.getPrefersex());
+        reviewDTO.setMainPic(profilePictureNewName);
+        reviewDTO.setTitle(title);
+        reviewDTO.setStar(star);
+        reviewDTO.setContent(content);
     }
 }
