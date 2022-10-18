@@ -44,7 +44,7 @@ public class UserDTO {
     private PREFERSEX prefersex;
 
 
-    private void EntityToDTO(User user){
+    public UserDTO(User user){
         this.id = user.getId();
         this.email = user.getEmail();
         this.nickname = user.getNickname();
@@ -57,5 +57,6 @@ public class UserDTO {
         this.isBanned = user.isBanned();
         this.prefersex = user.getPrefersex();
     }
+
 
 }

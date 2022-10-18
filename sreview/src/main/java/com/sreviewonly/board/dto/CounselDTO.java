@@ -21,7 +21,7 @@ public class CounselDTO {
 
     private String email;
 
-    private void EntityToDTO(Counsel counsel){
+    public CounselDTO(Counsel counsel){
         this.id=counsel.getId();
         this.title = counsel.getTitle();
         this.email = counsel.getEmail();

@@ -14,7 +14,7 @@ public class ReviewToHashtagDTO {
 
     private long hashtagId;
 
-    private void EntityToDTO(ReviewToHashtag review){
+    public ReviewToHashtagDTO(ReviewToHashtag review){
         this.id=review.getId();
         this.reviewId = review.getReviewId();
         this.hashtagId = review.getHashtagId();

@@ -18,9 +18,7 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review,Long> {
 
-
-
-    public Page<Review> findReviewByprefersexOrderByIdDesc(PREFERSEX prefersex, Pageable pageable);
+    public Page<Review> findReviewByprefersexOrderByIdDesc(PREFERSEX prefersex,Pageable pageable);
 
     public Long countByprefersex(PREFERSEX prefersex);
 

@@ -126,3 +126,12 @@ getContent() 함수를 넣어주면 엄청 쉽게 개발에 성공할 수 있다
 thymeleaf에서 null check를 해 줘야 하는 상황이 발생. 만약 null이면, 객체 자체를 띄워주지 않아야 html에 접속할 때 
 spelEvaluationException이 터지지 않는다.
 th:text="${hi?.getMember()?.getNickname()}"과 같이, Safe Search를 해 버리면 nullPointerException 문제를 피할 수 있다.
+
+2022-10-18
+this.reviewRepository is null 문제가 발생하였다.
+문제는 Pagination 객체였다.
+Pagenation 객체를 빈에 주입을 해 두었는데, 서비스 내부 함수에서 new Pagination 함수를 펼쳐버리고,
+함수도 public 생성자로 주입해버리니 서비스 내에서 사용해야되는 pagination이,
+컨트롤러에 있는 pagination을 사용해버리니 레포지토리를 찾을 수 없다는 오류가 발생한 것이었다.
+
+최대한 의존성 주입을 해줄 땐 접근 제어자를 private로 실행하자.

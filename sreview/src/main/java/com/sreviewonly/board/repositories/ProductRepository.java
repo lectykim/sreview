@@ -19,6 +19,4 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     public List<Product> findTop5ByOrderByIdDesc();
 
-
-    public List<Product> findProductByProductPreferSex(PREFERSEX prefersex);
 }

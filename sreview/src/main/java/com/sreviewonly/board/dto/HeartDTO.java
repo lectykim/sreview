@@ -15,7 +15,7 @@ public class HeartDTO {
 
     private long userId;
 
-    private void EntityToDTO(Heart heart){
+    public HeartDTO(Heart heart){
         this.id=heart.getId();
         this.reviewId = heart.getReviewId();
         this.userId = heart.getUserId();

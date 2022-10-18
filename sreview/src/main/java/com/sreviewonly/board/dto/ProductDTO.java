@@ -23,7 +23,7 @@ public class ProductDTO {
 
     private PREFERSEX preferSex;
 
-    public void EntityToDTO(Product product){
+    public ProductDTO(Product product){
         this.id= product.getId();
         this.productPic = product.getProductPic();
         this.name = product.getName();

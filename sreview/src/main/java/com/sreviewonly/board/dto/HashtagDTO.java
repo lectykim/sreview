@@ -14,7 +14,7 @@ public class HashtagDTO {
 
     private long tagCnt;
 
-    private void EntityToDTO(Hashtag hashtag){
+    public HashtagDTO(Hashtag hashtag){
         this.id=hashtag.getId();
         this.tagId= hashtag.getTagId();
         this.tagCnt =hashtag.getTagCnt();

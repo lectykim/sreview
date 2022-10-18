@@ -17,11 +17,7 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    @Query("SELECT u FROM User u join fetch u.reviews")
-    public List<User> findAllWithReviewUsingFetchJoin();
-
-    public List<User> findTop5ByOrderByIdAsc();
-
+    public List<User> findTop5ByOrderByIdDesc();
 
 
 }

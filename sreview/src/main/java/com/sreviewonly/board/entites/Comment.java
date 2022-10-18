@@ -40,10 +40,10 @@ public class Comment {
     private LocalDateTime deletedDate;
 
     @Builder
-    public Comment(String content,User user,Review review){
+    public Comment(String content,User user){
         this.content=content;
         this.user=user;
-        this.review=review;
+
     }
 
 

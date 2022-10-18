@@ -180,7 +180,7 @@
             <div class="mt-5 p-2 ml-5 mr-5" style="background-color: rgb(255,190,175); width: 30%; height: 100%;">
                 <h5>Product Ranking</h5>
                 <ul th:each="product : ${products}">
-                    <li><a th:href="@{review_main(prefersex=${product.productPreferSex},page=1)}" th:text="${product.productName}">Rank 1</a></li>
+                    <li><a th:href="@{review_main(prefersex=${product.preferSex},page=1)}" th:text="${product.name}">Rank 1</a></li>
                 </ul>
             </div>
             <div class="mt-5 p-2 ml-5 mr-5" style=" color : white;width: 30%; height: 100%;">

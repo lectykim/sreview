@@ -2,6 +2,7 @@ package com.sreviewonly.board.dto;
 
 import com.sreviewonly.board.entites.Product;
 import com.sreviewonly.board.entites.Review;
+import com.sreviewonly.board.entites.User;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,7 +38,14 @@ public class ReviewDTO {
 
     private String mainPic;
 
-    public void EntityToDTO(Review review){
+    private UserDTO userDTO;
+
+    private CommentDTO commentDTO;
+
+    private ProductDTO productDTO;
+
+    public ReviewDTO(Review review){
+
         this.id=review.getId();
         this.hits = review.getHits();
         this.content = review.getContent();;
@@ -48,7 +56,10 @@ public class ReviewDTO {
         this.is_hided = review.is_hided();
         this.prefersex = review.getPrefersex();
         this.mainPic = review.getMainPic();
+
     }
+
+
 
 
 }

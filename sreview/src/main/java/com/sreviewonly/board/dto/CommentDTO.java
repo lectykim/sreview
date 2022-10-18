@@ -23,7 +23,7 @@ public class CommentDTO {
 
     private Review review;
 
-    private void EntityToDTO(Comment comment){
+    public CommentDTO(Comment comment){
         this.id=comment.getId();
         this.content = comment.getContent();
         this.user = comment.getUser();

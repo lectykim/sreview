@@ -1,5 +1,6 @@
 package com.sreviewonly.board.entites;
 
+import com.sreviewonly.board.dto.UserDTO;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.entites.enums.ROLE;
 import com.sreviewonly.board.entites.enums.VIPRANK;
@@ -84,6 +85,11 @@ public class User {
         this.isBanned=isBanned;
         this.prefersex=prefersex;
     }
+
+
+
+
+
 
 
     public User() {
