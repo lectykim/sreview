@@ -1,5 +1,6 @@
 package com.sreviewonly.board.dto;
 
+import com.sreviewonly.board.entites.Counsel;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +20,12 @@ public class CounselDTO {
     private String content;
 
     private String email;
+
+    private void EntityToDTO(Counsel counsel){
+        this.id=counsel.getId();
+        this.title = counsel.getTitle();
+        this.email = counsel.getEmail();
+    }
 
 
 }

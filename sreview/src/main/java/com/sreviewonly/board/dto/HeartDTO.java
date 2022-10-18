@@ -1,5 +1,11 @@
 package com.sreviewonly.board.dto;
 
+import com.sreviewonly.board.entites.Heart;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class HeartDTO {
 
     private long id;
@@ -8,5 +14,11 @@ public class HeartDTO {
 
 
     private long userId;
+
+    private void EntityToDTO(Heart heart){
+        this.id=heart.getId();
+        this.reviewId = heart.getReviewId();
+        this.userId = heart.getUserId();
+    }
 
 }

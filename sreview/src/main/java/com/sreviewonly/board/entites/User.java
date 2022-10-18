@@ -48,7 +48,7 @@ public class User {
 
     private String background_pic;
 
-    private boolean is_banned;
+    private boolean isBanned;
 
     @Enumerated(EnumType.STRING)
     private PREFERSEX prefersex;
@@ -72,7 +72,7 @@ public class User {
 
 
     @Builder
-    public User(String email, String nickname,String password , VIPRANK viprank,ROLE role ,long point,String profile_pic,String background_pic,boolean is_banned, PREFERSEX prefersex){
+    public User(String email, String nickname,String password , VIPRANK viprank,ROLE role ,long point,String profile_pic,String background_pic,boolean isBanned, PREFERSEX prefersex){
         this.email=email;
         this.nickname=nickname;
         this.password=password;
@@ -81,7 +81,7 @@ public class User {
         this.point=point;
         this.profile_pic=profile_pic;
         this.background_pic=background_pic;
-        this.is_banned=is_banned;
+        this.isBanned=isBanned;
         this.prefersex=prefersex;
     }
 

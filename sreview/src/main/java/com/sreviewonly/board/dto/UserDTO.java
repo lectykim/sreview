@@ -1,8 +1,10 @@
 package com.sreviewonly.board.dto;
 
+import com.sreviewonly.board.entites.User;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import com.sreviewonly.board.entites.enums.ROLE;
 import com.sreviewonly.board.entites.enums.VIPRANK;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -36,9 +38,24 @@ public class UserDTO {
 
     private String background_pic;
 
-    private boolean is_banned;
+    private boolean isBanned;
 
 
     private PREFERSEX prefersex;
+
+
+    private void EntityToDTO(User user){
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.nickname = user.getNickname();
+        this.password = user.getPassword();
+        this.viprank = user.getViprank();
+        this.role = user.getRole();
+        this.point = user.getPoint();
+        this.profile_pic = user.getProfile_pic();
+        this.background_pic = user.getBackground_pic();
+        this.isBanned = user.isBanned();
+        this.prefersex = user.getPrefersex();
+    }
 
 }

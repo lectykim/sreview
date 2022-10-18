@@ -1,5 +1,6 @@
 package com.sreviewonly.board.dto;
 
+import com.sreviewonly.board.entites.Hashtag;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,12 @@ public class HashtagDTO {
     private String tagId;
 
     private long tagCnt;
+
+    private void EntityToDTO(Hashtag hashtag){
+        this.id=hashtag.getId();
+        this.tagId= hashtag.getTagId();
+        this.tagCnt =hashtag.getTagCnt();
+    }
 
 
 }

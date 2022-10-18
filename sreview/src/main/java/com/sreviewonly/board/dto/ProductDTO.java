@@ -1,5 +1,6 @@
 package com.sreviewonly.board.dto;
 
+import com.sreviewonly.board.entites.Product;
 import com.sreviewonly.board.entites.enums.PREFERSEX;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,5 +22,15 @@ public class ProductDTO {
     private String shopLink;
 
     private PREFERSEX preferSex;
+
+    public void EntityToDTO(Product product){
+        this.id= product.getId();
+        this.productPic = product.getProductPic();
+        this.name = product.getName();
+        this.shopName = product.getShopName();
+        this.price = product.getPrice();
+        this.shopLink = product.getShopLink();
+        this.preferSex = product.getPreferSex();
+    }
 
 }
