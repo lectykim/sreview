@@ -17,7 +17,7 @@ public class FileNameRandomization {
         UUID uuid = UUID.randomUUID();
         String newFileName = uuid.toString() + extension;
 
-        String fullPath = "C:\\new_project\\sreview\\sreview\\src\\main\\resources\\static" + newFileName;
+        String fullPath = "C:\\new_project\\sreview\\sreview\\src\\main\\resources\\static\\image\\" + newFileName;
 
         try{
             byte[] bytes = multipartFile.getBytes();

@@ -57,7 +57,6 @@ public class ReviewDTO {
     }
 
     public ReviewDTO(Review review){
-
         this.id=review.getId();
         this.hits = review.getHits();
         this.content = review.getContent();;

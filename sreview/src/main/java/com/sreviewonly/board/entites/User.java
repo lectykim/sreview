@@ -99,6 +99,7 @@ public class User {
     }
 
     private User(UserBuilder builder){
+        this.id=id;
         this.email = builder.email;
         this.nickname = builder.nickname;
         this.viprank = builder.viprank;
@@ -112,6 +113,9 @@ public class User {
     }
 
     public static class UserBuilder implements CommonBuilder<User>{
+
+        private long id;
+
         private String email;
         private String nickname;
         private String password;
@@ -126,6 +130,7 @@ public class User {
 
 
         public UserBuilder(UserDTO userDTO){
+            this.id=id;
             this.email = userDTO.getEmail();
             this.nickname = userDTO.getNickname();
             this.viprank = userDTO.getViprank();

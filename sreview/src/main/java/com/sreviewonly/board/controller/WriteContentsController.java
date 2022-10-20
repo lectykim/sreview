@@ -31,7 +31,7 @@ public class WriteContentsController {
 
     @RequestMapping(value = "review_write",method = RequestMethod.POST)
     public String writeReview(@ModelAttribute("user") UserDTO userDTO,
-                              @RequestParam(name = "profile_pic")MultipartFile profilePic,
+                              @RequestParam(name = "main_pic")MultipartFile profilePic,
                               @RequestParam(name="title")String title,
                               @RequestParam(name="content")String content,
                               @RequestParam(name="star") double star){
