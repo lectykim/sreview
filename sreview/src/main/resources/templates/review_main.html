@@ -21,11 +21,16 @@
 <body>
 <th:block layout:fragment="header" th:include="@{/fragments/header}"></th:block>
 
+<!--Prefersex Introduce-->
+
 <div class="p-3" style="margin: 20px 20px; background-color: mediumspringgreen; text-align: center;">
     <div style="text-align: center;" th:text="|${preferSex}s list!|">
 
     </div>
 </div>
+
+<!--Review Board Arrange With Flex and Pagination-->
+
 <div class="container py-3" style="margin-top:50px;">
     <div style="text-align: right;">
         <button type="button" style="border:0.1em solid black; background-color: aqua; margin-bottom: 20px; padding: 10px 10px;" th:onclick="|location.href='@{review_write_page}'|">ADD Review</button>
@@ -49,6 +54,7 @@
 
     </div>
 
+<!--    This area is inserted pagination code-->
     <div id="page" style="text-align: center">
 
     </div>
@@ -57,6 +63,7 @@
 <th:block layout:fragment="script">
     <script text="text/javascript" th:inline="javascript">
         /*<![CDATA[*/
+
 
         let pageSize = /*[[${pageSize}]]*/;
         let firstPage = /*[[${firstPage}]]*/;
@@ -80,6 +87,9 @@
             else{
                 end = firstPage + 10;
             }
+
+
+            // First page
             let element = document.createElement('a');
             element.setAttribute("href","review_main?prefersex="+sex+"&page="+1);
             let text = document.createTextNode("First");
@@ -87,6 +97,7 @@
             let pageContainer = document.getElementById("page");
             pageContainer.insertAdjacentElement("beforeend",element);
 
+            // Before 10 Page
             element = document.createElement('a');
             element.setAttribute("href","review_main?prefersex="+sex+"&page="+leftPage);
             text = document.createTextNode("<");
@@ -94,6 +105,7 @@
             pageContainer = document.getElementById("page");
             pageContainer.insertAdjacentElement("beforeend",element);
 
+            // 10 pages from here
             for(let i=firstPage;i<end;i++){
                 let element = document.createElement('a');
                 element.setAttribute("href","review_main?prefersex="+sex+"&page="+i);
@@ -104,6 +116,7 @@
 
             }
 
+            // After 10 page
             element = document.createElement('a');
             element.setAttribute("href","review_main?prefersex="+sex+"&page="+end);
             text = document.createTextNode(">");
@@ -111,6 +124,7 @@
             pageContainer = document.getElementById("page");
             pageContainer.insertAdjacentElement("beforeend",element);
 
+            // Last page
             element = document.createElement('a');
             element.setAttribute("href","review_main?prefersex="+sex+"&page="+pageSize);
             text = document.createTextNode("Last");

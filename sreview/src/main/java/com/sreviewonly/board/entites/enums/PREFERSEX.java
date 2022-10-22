@@ -5,11 +5,11 @@ public enum PREFERSEX {
 
     public static PREFERSEX changeStringToPreferSex(String sex){
         PREFERSEX prefersex;
-        if(sex.equals("mmt")){
+        if(sex.equals("mmt")||sex.equals("MMT")){
             prefersex = MMT;
-        }else if(sex.equals("wmt")){
+        }else if(sex.equals("wmt")||sex.equals("WMT")){
             prefersex=WMT;
-        }else if (sex.equals("cpt")){
+        }else if (sex.equals("cpt")||sex.equals("CPT")){
             prefersex=CPT;
         }else{
             prefersex=WMT;

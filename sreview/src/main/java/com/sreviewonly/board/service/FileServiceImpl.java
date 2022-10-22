@@ -12,6 +12,7 @@ import com.sreviewonly.board.repositories.UserRepository;
 import com.sreviewonly.board.util.FileNameRandomization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
@@ -26,6 +27,7 @@ public class FileServiceImpl implements FileService{
     @Autowired
     private ProductRepository productRepository;
     @Override
+    @Transactional
     public void signUpRegister(String email, String password, String nickname, MultipartFile profile_pic, MultipartFile background_pic, PREFERSEX prefersex) {
         String profilePictureNewName = FileNameRandomization.uploadFileWithUUID(profile_pic);
         String backgroundPictureNewName = FileNameRandomization.uploadFileWithUUID(background_pic);
@@ -35,6 +37,7 @@ public class FileServiceImpl implements FileService{
         userDTO.setNickname(nickname);
         userDTO.setProfile_pic(profilePictureNewName);
         userDTO.setBackground_pic(backgroundPictureNewName);
+        userDTO.setPrefersex(prefersex);
         userDTO.setOtherElement();
 
         User user = new User.UserBuilder(userDTO).build();
@@ -43,8 +46,10 @@ public class FileServiceImpl implements FileService{
     }
 
     @Override
+    @Transactional
     public void insertReview(MultipartFile profilePic, String title, String content, double star, UserDTO userDTO) {
         String profilePictureNewName = FileNameRandomization.uploadFileWithUUID(profilePic);
+        System.out.println("userDTO : " + userDTO.getPrefersex());
         ReviewDTO reviewDTO = new ReviewDTO();
         reviewDTO.setUserDTO(userDTO);
         reviewDTO.setPrefersex(userDTO.getPrefersex());
@@ -53,7 +58,6 @@ public class FileServiceImpl implements FileService{
         reviewDTO.setStar(star);
         reviewDTO.setContent(content);
         reviewDTO.setOtherElements();
-        reviewDTO.setPrefersex(userDTO.getPrefersex());
 
         Review review = new Review.ReviewBuilder(reviewDTO).build();
         User user = userRepository.findById(userDTO.getId()).get();

@@ -30,6 +30,7 @@
       그럴 경우 디스플레이의 전체 width가 쉽게 바뀔 수 있음. -->
 <div style=" margin-top: 30px; margin-left: 20px; margin-right: 20px; background-color:rgb(255, 170, 190)">
   <div style="text-align: center;">
+<!--    Writer name binding-->
     <h5 style="padding-top :10px" th:text="|${user?.nickname},s review|"></h5>
   </div>
   <div class="p-3" style="display: flex;">
@@ -38,6 +39,7 @@
     </div>
 
     <div style="margin-top:20px;margin-bottom:20px;margin-left: 20%; text-align: center;">
+<!--      Product name binding-->
       <h6 style="background-color: yellowgreen; font: sans-serif; padding:10px 10px" th:text="${product.name}"></h6>
       <h6 style="margin-top: 70px;background-color: yellowgreen; font: sans-serif; padding:10px 10px">Product Average Review Point</h6>
     </div>
@@ -48,6 +50,8 @@
 
   <div style="margin-top: 20px; margin-left: 20px; text-align: center;">
 
+<!--    Rating-->
+
     <span th:text="|Rating : ${review.star}|"></span>
     <span class="fa fa-star checked" style="color: yellow;"></span>
     <span class="fa fa-star checked" style="color: yellow;"></span>
@@ -55,12 +59,14 @@
     <span class="fa fa-star checked" style="color: yellow;"></span>
     <span class="fa fa-star"></span>
   </div>
+<!--  Content -->
   <div style="margin-top: 20px; width:100%; height: 6.25rem;">
     <div style="text-align:center" th:text="${review.content}">
 
     </div>
   </div>
   <div style=" margin-top: 30px; margin-left: 20px; margin-right: 20px; background-color:rgb(255, 170, 190)" th:each="comment:${comment}">
+<!--    If reply is existed, That is showed-->
     <div class="p-3" style="display: flex;">
       <div style="margin-top:20px;margin-bottom:20px;margin-left: 30px; width: 150px; height:150px;">
         <img th:src="|/image/${comment?.getUser()?.getProfile_pic()}|" style="width: 150px; height:150px;" />
