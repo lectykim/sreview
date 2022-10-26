@@ -36,7 +36,7 @@
                 <img src="/image/logo_fastventure.png" style="margin: auto; max-width: 100%; height: auto;"/>
                 <div class="signup-form__catchphrase">SIGN IN</div>
             </div>
-            Email : <br><input type="email" name="email" id="email" class="my-2"/>
+            Email : <br><input type="email" name="email" id="email" class="my-2"/> <input type="button" style="margin-left: 5px" value="Email verify" onclick="emailVerify()"> <span id="emailVerifyResult" ></span>
             <br>
             Password : <br><input type="text" name="password" id="password" class="my-2"/>
             <br>
@@ -55,13 +55,41 @@
                 <input type="radio" name="prefersex" value="MMT" id="MMT"> <label for="MMT">Man Masturbation Toy</label>
                 <input type="radio" name="prefersex" value="CPT" id="CPT"> <label for="CPT">Couple Toy</label>
             </div>
-            <button></button>
+
             <input type="submit" value="submit"/>
             <input type="reset" value="reset"/>
         </fieldset>
     </form>
 </div>
 <th:block layout:fragment="footer" th:include="@{/fragments/footer}"></th:block>
+<script type="text/javascript">
+
+    let emailSpan = document.getElementById("emailVerifyResult");
+
+
+    function inputValue(){
+        return document.getElementById(email);
+    }
+
+    function emailVerify() {
+
+        let email =inputValue();
+
+
+        $.ajax({
+            url: "http://localhost:8080/api/emailverify/"+email.value,
+            type:'GET',
+            success:(data)=>{
+                let node = document.createTextNode("You can use this email!");
+                emailSpan.appendChild(node);
+            },
+            error:(data)=>{
+                let node = document.createTextNode("This email is already in use");
+                emailSpan.appendChild(node);
+            }
+        })
+    }
+</script>
 </body>
 
 </html>

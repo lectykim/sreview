@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
     public UserDTO getUserDTO(String email,String password);
+
+    public UserDTO findUserDTOById(String email);
 }

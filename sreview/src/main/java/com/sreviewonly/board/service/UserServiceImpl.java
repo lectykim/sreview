@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService{
 
     }
 
+    @Override
+    public UserDTO findUserDTOById(String email) {
+        return null;
+    }
+
 }
